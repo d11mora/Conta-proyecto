@@ -18,7 +18,7 @@ using namespace std;
 double Cajabancos,Ventas,Iva_por_pagar,clientes,capital;
 
 int main (){
-system ("color 71");
+/* system ("color 71");*/
 menu ();
 	
 return 0;
