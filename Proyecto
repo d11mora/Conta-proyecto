@@ -15,7 +15,7 @@ void version ();
 using namespace std;
 
 
-double Cajabancos,Ventas,Iva_por_pagar,clientes,capital;
+double Cajabancos=0,Ventas=0,Iva_por_pagar=0,clientes=0,capital=0,Iva=0,Docc=0,MI=0,ME=0,VH=0,EC=0,DE=0;
 
 int main (){
 system ("color 71");
@@ -36,7 +36,7 @@ cout<<"                                      Menu Principal Proyecto de Contabil
 cout<<"                                                  UMG SEDE ZONA 16"<<endl;
 cout<<"1.Saldos Iniciales                                        "<<endl;
 cout<<"2.Jornalizacion                                           "<<endl;
-cout<<"3.Balnce de Saldos                                        "<<endl;
+cout<<"3.Balance de Saldos                                        "<<endl;
 cout<<"4.Estado de Perdidas Y Ganacias                           "<<endl;
 cout<<"5.Balance General                                         "<<endl;
 cout<<"6.Razones Finacieras                                      "<<endl;
@@ -96,8 +96,14 @@ cout<<"1.Caja y Bancos :          ";cin>>Cajabancos;
 cout<<"2.Ventas        :                                 ";cin>>Ventas;
 cout<<"3.Iva por pagar :                                 ";cin>>Iva_por_pagar;	
 cout<<"4.Clientes :               ";cin>>clientes;
-	
-debe = Cajabancos + clientes; 
+cout<<"5.Iva por cobrar:          ";cin>>Iva;
+cout<<"6.Documento por cobrar     ";cin>>Docc;
+cout<<"7.Mercaderia I             ";cin>>MI;	
+cout<<"8.Mobiliario Y Equipo      ";cin>>ME;
+cout<<"9.Vehiculos                ";cin>>VH;
+cout<<"10.Equipo de Computacion   ";cin>>EC;
+cout<<"11.Deudores                ";cin>>DE;
+debe = Cajabancos + clientes+Iva+Docc+MI+ME+VH+EC+DE; 
 haber = Ventas + Iva_por_pagar; 
 capital = debe - haber;
 cout<<".Capital        :                               "<<capital<<endl;
@@ -196,9 +202,25 @@ void Razones (){
 	
 }
 
+
+
+void miembros (){
+system("CLS");	
+	
+cout<<"           Nombre : Marlon Adrian Gonzalez Garzona       Carnet : 6990-19-12170"<<endl;
+cout<<"           Nombre : Marcos Sleyther Castellanos Lemus	 Carnet : 6990-19-9299"<<endl;
+cout<<"           Nombre : Luis Simon Lorenzo Gonzalez          Carnet : 6990-19-12141"<<endl;	
+cout<<"           Nombre : Eduardo Antonio Perez Ajquijay       Carnet : 6990-19-547";	
+cout<<"\n\n\n\nPresiones Enter para regresar al menú principal";
+getch ();
+return menu();	
+	
+}
+
 void version (){
 system("CLS");
 cout<< "                         Version del Programa 1.0.1  Copyrigth 2019 ";
 getch();
 return menu();	
 }
+	
