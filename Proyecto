@@ -15,7 +15,7 @@ void version ();
 using namespace std;
 
 
-double Cajabancos,Ventas,Iva_por_pagar,clientes,capital;
+double Cajabancos,Ventas,Iva_por_pagar,clientes,capital,wonder;
 
 int main (){
 /* system ("color 71");*/
