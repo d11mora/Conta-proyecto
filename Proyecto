@@ -15,7 +15,7 @@ void version ();
 using namespace std;
 
 
-double Cajabancos=0,Ventas=0,Iva_por_pagar=0,clientes=0,capital=0,Iva=0,Docc=0,MI=0,ME=0,VH=0,EC=0,DE=0;
+double Cajabancos=0,Ventas=0,Iva_por_pagar=0,clientes=0,capital=0,Iva=0,Docc=0,MI=0,ME=0,VH=0,EC=0,IM=0,GI=0,PU=0,DP=0,PRO=0,HP=0;
 
 int main (){
 system ("color 71");
@@ -102,11 +102,16 @@ cout<<"7.Mercaderia I             ";cin>>MI;
 cout<<"8.Mobiliario Y Equipo      ";cin>>ME;
 cout<<"9.Vehiculos                ";cin>>VH;
 cout<<"10.Equipo de Computacion   ";cin>>EC;
-cout<<"11.Deudores                ";cin>>DE;
-debe = Cajabancos + clientes+Iva+Docc+MI+ME+VH+EC+DE; 
-haber = Ventas + Iva_por_pagar; 
+cout<<"11.Inmuebles               ";cin>>IM;
+cout<<"12.Gastos de Instalacion   ";cin>>GI;
+cout<<"13.Papeleria y utilies     ";cin>>PU;
+cout<<"14.Proveedores                                    ";cin>>PRO;
+cout<<"15.Documentos por pagar                           ";cin>>DP;
+cout<<"16.Hipotecas                                      ";cin>>HP;
+debe = Cajabancos + clientes+Iva+Docc+MI+ME+VH+EC+IM+GI+PU; 
+haber = Ventas + Iva_por_pagar+PRO+DP+HP; 
 capital = debe - haber;
-cout<<".Capital        :                               "<<capital<<endl;
+cout<<"18.Capital        :                              "<<capital<<endl;
 cout<<"                      __________________________________________"<<endl;
 cout<<"Totales                    "<<debe<<"                    "<<haber + capital<<endl;  
 cout<<"                      __________________________________________"<<endl;
