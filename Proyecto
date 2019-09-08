@@ -15,7 +15,7 @@ void version ();
 using namespace std;
 
 
-double Cajabancos=0,Ventas=0,Iva_por_pagar=0,clientes=0,capital=0,Iva=0,Docc=0,MI=0,ME=0,VH=0,EC=0,IM=0,GI=0,PU=0,DP=0,PRO=0,HP=0;
+double Cajabancos=0,Ventas=0,Iva_por_pagar=0,clientes=0,capital=0,Ivacc=0,Docc=0,MI=0,ME=0,VH=0,EC=0,IM=0,GI=0,PU=0,DP=0,PRO=0,HP=0;
 
 int main (){
 system ("color 71");
@@ -77,8 +77,11 @@ miembros ();
 break;
 case 8:
 version ();
-case 9:
+case 9:{
+
+
 repite = false;	
+}
 }
 } while (repite);
 
@@ -93,27 +96,25 @@ system ("color 73");
 cout<<"             Saldos Iniciales o  Partida de Apertura"<<endl;
 cout<<"                           DEBE                  HABER  "<<endl;
 cout<<"1.Caja y Bancos :          ";cin>>Cajabancos;
-cout<<"2.Ventas        :                                 ";cin>>Ventas;
-cout<<"3.Iva por pagar :                                 ";cin>>Iva_por_pagar;	
-cout<<"4.Clientes :               ";cin>>clientes;
-cout<<"5.Iva por cobrar:          ";cin>>Iva;
-cout<<"6.Documento por cobrar     ";cin>>Docc;
-cout<<"7.Mercaderia I             ";cin>>MI;	
-cout<<"8.Mobiliario Y Equipo      ";cin>>ME;
-cout<<"9.Vehiculos                ";cin>>VH;
-cout<<"10.Equipo de Computacion   ";cin>>EC;
-cout<<"11.Inmuebles               ";cin>>IM;
-cout<<"12.Gastos de Instalacion   ";cin>>GI;
-cout<<"13.Papeleria y utilies     ";cin>>PU;
-cout<<"14.Proveedores                                    ";cin>>PRO;
-cout<<"15.Documentos por pagar                           ";cin>>DP;
-cout<<"16.Hipotecas                                      ";cin>>HP;
-debe = Cajabancos + clientes+Iva+Docc+MI+ME+VH+EC+IM+GI+PU; 
-haber = Ventas + Iva_por_pagar+PRO+DP+HP; 
+cout<<"2.Clientes :               ";cin>>clientes;
+cout<<"3.Iva por cobrar:          ";cin>>Ivacc;
+cout<<"4.Documento por cobrar     ";cin>>Docc;
+cout<<"5.Mercaderia I             ";cin>>MI;	
+cout<<"6.Mobiliario Y Equipo      ";cin>>ME;
+cout<<"7.Vehiculos                ";cin>>VH;
+cout<<"8.Equipo de Computacion    ";cin>>EC;
+cout<<"9.Inmuebles                ";cin>>IM;
+cout<<"10.Gastos de Instalacion   ";cin>>GI;
+cout<<"11.Papeleria y utilies     ";cin>>PU;
+cout<<"12.Proveedores                                    ";cin>>PRO;
+cout<<"13.Documentos por pagar                           ";cin>>DP;
+cout<<"14.Hipotecas                                      ";cin>>HP;
+debe = Cajabancos + clientes+Ivacc+Docc+MI+ME+VH+EC+IM+GI+PU; 
+haber = PRO+DP+HP; 
 capital = debe - haber;
-cout<<"18.Capital        :                              "<<capital<<endl;
+cout<<"18.Capital        :                               "<<capital<<endl;
 cout<<"                      __________________________________________"<<endl;
-cout<<"Totales                    "<<debe<<"                    "<<haber + capital<<endl;  
+cout<<"Totales                    "<<debe<<"                   "<<haber + capital<<endl;  
 cout<<"                      __________________________________________"<<endl;
 cout<<"                      __________________________________________"<<endl;
 if (capital<0 )  {
@@ -135,7 +136,10 @@ do{
 system("CLS");	
 cout<<"                  Elija el prototipo de Partida que desea Realizar"<<endl;
 cout<<"1. Partida De Venta  de mercaderia al Contado"<<endl;
-cout<<"2. Partida De compra de mercaderia al Contado"<<endl;
+cout<<"2. Partida De Venta de mercaderia al Credito"<<endl;
+cout<<"3. Partida De Venta de mercaderia firmando Documentos por Cobrar"<<endl;
+cout<<"4. Partida De Venta de mercaderia al Credito Y firmando Documentos"<<endl;
+cout<<"5. Partida De Venta de mercaderia al Credito, Firmando Documentos y Pago al Contado"<<endl;
 cin>>partida;
 
 switch (partida){
@@ -165,12 +169,124 @@ break;
 }
 
 case 2 :{
+system("CLS");	
+double cl1,cl2,v3,v4,ivp3,ivp4;		
+cout<<"	                        Venta de mercaderia al Credito"<<endl;
+cout<<"                       DEBE                               HABER    "<<endl;	
+cout<<"\nClientes               ";cin>>cl1;
+v3=cl1/1.12;        	
+cout<<"  Ventas                                                    "<< fixed << setprecision(2)<<v3<<endl;	
+ivp3=v3*0.12;
+cout<<"  Iva por pagar                                             "<< fixed << setprecision(2)<<ivp3<<endl;
+cl2=clientes + cl1;
+clientes = cl2;
+v4 = Ventas + v3;
+Ventas = v4;
+ivp4=Iva_por_pagar + ivp3;
+Iva_por_pagar = ivp4;
+cout<<"                 ______________________________________________________"<<endl;
+cout<<"TOTALES                "<<cl1<<"                                  "<<v3+ivp3<<endl;
+cout<<"                 ______________________________________________________"<<endl;
+cout<<"                 ______________________________________________________";
+getch();	
+	
+break;
+}
+
+case 3 :{
+system("CLS");
+double docc1,docc2,v5,v6,ivp5,ivp6;
+cout<<"	                 Venta de mercaderia al Credito con Firma de Documentos"<<endl;
+cout<<"                       DEBE                               HABER    "<<endl;		
+cout<<"\nDocumentos por cobrar  ";cin>>docc1;
+v5=docc1/1.12;
+cout<<"  Ventas                                                    "<< fixed << setprecision(2)<<v5<<endl;
+ivp5=v5*0.12;
+cout<<"  Iva por pagar                                             "<< fixed << setprecision(2)<<ivp5<<endl;
+docc2=Docc + docc1;
+Docc=docc2;
+v6=Ventas + v5;
+Ventas=v6;
+ivp6=Iva_por_pagar + ivp5;
+Iva_por_pagar=ivp6;
+cout<<"                 ______________________________________________________"<<endl;
+cout<<"TOTALES                "<<docc1<<"                                "<<v5+ivp5<<endl;
+cout<<"                 ______________________________________________________"<<endl;
+cout<<"                 ______________________________________________________";	
+	
+getch();	
+break;
+}
+case 4:{
+system("CLS");
+double docc3,docc4,cl3,cl4,v7,v8,ivp7,ivp8;
+cout<<"                Venta de mercaderia al Credito Y Firmando Documentos"<<endl;	
+cout<<"                       DEBE                               HABER    "<<endl;	
+cout<<"\nDocumentos por cobrar  ";cin>>docc3;
+cout<<"\nClientes               ";cin>>cl3;
+v7 = (docc3 + cl3)/1.12;
+cout<<"  Ventas                                                    "<< fixed << setprecision(2)<<v7<<endl;	
+ivp7 =v7*0.12;
+cout<<"  Iva por pagar                                             "<< fixed << setprecision(2)<<ivp7<<endl;
+docc4 = Docc + docc3;
+Docc=docc4;
+cl4=clientes + cl3;
+clientes = cl4;
+v8 = Ventas + v7;
+Ventas = v8;
+ivp8 = Iva_por_pagar+ ivp7;
+Iva_por_pagar = ivp8;
+cout<<"                 ______________________________________________________"<<endl;
+cout<<"TOTALES                "<<docc3+cl3<<"                     "<<v7+ivp7<<endl;
+cout<<"                 ______________________________________________________"<<endl;
+cout<<"                 ______________________________________________________";	
+
+getch();
+break;
+}
+	
+case 5:{
+system("CLS");	
+double cb3,cb4,docc5,docc6,cl5,cl6,v9,v10,ivp9,ivp10;
+cout<<"Venta de mercaderia al Contado,Credito y Firmando Documentos"<<endl;
+cout<<"                       DEBE                               HABER    "<<endl;	
+cout<<"\nCaja y Bancos          ";cin>>cb3;
+cout<<"\nDocumentos por Cobrar  ";cin>>docc5;
+cout<<"\nClientes               ";cin>>cl5;
+v9 = (cb3 + docc5 + cl5)/1.12;
+cout<<"  Ventas                                                    "<< fixed << setprecision(2)<<v9<<endl;
+ivp9=v9 * 0.12;
+cout<<"  Iva por pagar                                             "<< fixed << setprecision(2)<<ivp9<<endl;
+docc6 = Docc + docc5;
+Docc = docc6;
+cl6 = clientes + cl5;
+clientes = cl6;
+cb4 = Cajabancos + cb3;
+Cajabancos = cb4;
+v10 = Ventas + v9;
+Ventas = v10;
+ivp10= Iva_por_pagar + ivp9;
+Iva_por_pagar = ivp10;	
+cout<<"                 ______________________________________________________"<<endl;
+cout<<"TOTALES                "<<cb3+docc5+cl5<<"                     "<<v9+ivp9<<endl;
+cout<<"                 ______________________________________________________"<<endl;
+cout<<"                 ______________________________________________________";		
+
+getch();	
+break;
+}	
+case 6:{
+	
+	
+break;
+}
+case 7 :{
 	
 repite = false;		
 break;
 }
 
-		
+	
 }
 }while(repite);
 
@@ -178,13 +294,33 @@ return menu();
 }
 
  void Balnce(){
+ double debe = 0, haber = 0;	
  system("CLS");	
  cout<<"                        Balance de Saldos             "<<endl;
- cout<<"                  DEBE                        HABER   "<<endl;
- cout<<"CAJA Y BANCOS     "<<Cajabancos<<endl;
+ cout<<"                       DEBE                     HABER   "<<endl;
+ cout<<"CAJA Y BANCOS           "  <<Cajabancos<<endl;
+ cout<<"Clientes                "  <<clientes<<endl;
+ cout<<"Documentos por Cobrar   "  <<Docc<<endl;
+ cout<<"Equipo de Computacion   "  <<EC<<endl;
+ cout<<"Gastos de Instalacion   "  <<GI<<endl;
+ cout<<"Inmbuebles              " <<IM<<endl;
+ cout<<"Iva por Cobrar          " <<Ivacc<<endl;
+ cout<<"Mobiliario y Equipo     " <<ME<<endl;
+ cout<<"Mercaderia I            " <<MI<<endl;
+ cout<<"Papelería y Utiles      " <<PU<<endl;
+ cout<<"Vehiculos               " <<VH<<endl;
  cout<<"Ventas                                         "<<Ventas;
- cout<<"\nIva por pagar                                  "<<Iva_por_pagar;	 
- 
+ cout<<"\nIva por pagar                                  "<<Iva_por_pagar;	
+ cout<<"\nProveedores                                    "<<PRO;
+ cout<<"\nHipotecas                                      "<<HP;
+ cout<<"\nDocumentos por pagar                           "<<DP;
+ cout<<"\nCapital                                        "<<capital;
+ debe=Cajabancos+clientes+Docc+EC+GI+IM+Ivacc+ME+MI+PU+VH;
+ haber= Ventas + Iva_por_pagar+PRO+HP+DP+capital;
+ cout<<"\n                      __________________________________________"<<endl;
+ cout<<"Totales                    "<<debe<<"                  "<<haber<<endl;  
+ cout<<"                      __________________________________________"<<endl;
+ cout<<"                      __________________________________________"<<endl;
  getch();
  return menu();
  }
