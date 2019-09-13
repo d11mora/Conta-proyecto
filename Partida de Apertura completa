@@ -1,0 +1,232 @@
+#include <iostream.>
+#include <conio.h>
+#include<stdlib.h>
+#include<iomanip>
+void menu ();
+void Apertura ();
+void Jornalizacion ();
+void Balnce();
+void Resultados ();
+void General ();
+void Razones ();
+void miembros ();
+void version ();
+			
+using namespace std;
+
+
+double Cajabancos=0,Ventas=0,Iva_por_pagar=0,clientes=0,capital=0,Iva=0,Docc=0,MI=0,ME=0,VH=0,EC=0,DE=0,GI=0,PU=0,DP=0,PRO=0,HP=0,AC=0;
+
+int main (){
+system ("color 71");
+menu ();
+	
+return 0;
+}
+
+
+void menu (){
+	
+bool repite = true;	
+int opcion;
+
+do {
+system("CLS");
+cout<<"                                      Menu Principal Proyecto de Contabilidad"<<endl;
+cout<<"                                                  UMG SEDE ZONA 16"<<endl;
+cout<<"1.Saldos Iniciales                                        "<<endl;
+cout<<"2.Jornalizacion                                           "<<endl;
+cout<<"3.Balance de Saldos                                        "<<endl;
+cout<<"4.Estado de Perdidas Y Ganacias                           "<<endl;
+cout<<"5.Balance General                                         "<<endl;
+cout<<"6.Razones Finacieras                                      "<<endl;
+cout<<"7.Desarrolladores del Sistema                             "<<endl;
+cout<<"8.Version del Programa                                    "<<endl;
+cout<<"9.Salir                                                   "<<endl;
+cout<<"\nElija una de Las Opciones: ";cin>>opcion;
+
+switch (opcion){
+	
+case  1: {
+Apertura ();
+break;
+}
+
+case 2:{	
+Jornalizacion ();	
+break;
+}
+
+
+case 3:{	
+Balnce();	
+break;
+}
+
+case 4:
+Resultados ();
+break;
+case 5:
+General ();	
+break;
+case 6: 
+Razones ();	
+break;
+case 7: 
+miembros ();
+break;
+case 8:
+version ();
+case 9:
+repite = false;	
+}
+} while (repite);
+
+}
+
+
+void Apertura (){
+system ("color 82");
+double debe,haber;	
+system("CLS");
+system ("color 73");
+cout<<"             Saldos Iniciales o  Partida de Apertura"<<endl;
+cout<<"                           DEBE                  HABER  "<<endl;
+cout<<"1.Caja y Bancos :          ";cin>>Cajabancos;
+cout<<"2.Ventas        :                                 ";cin>>Ventas;
+cout<<"3.Iva por pagar :                                 ";cin>>Iva_por_pagar;	
+cout<<"4.Clientes :               ";cin>>clientes;
+cout<<"5.Iva por cobrar:          ";cin>>Iva;
+cout<<"6.Documento por cobrar     ";cin>>Docc;
+cout<<"7.Mercaderia I             ";cin>>MI;	
+cout<<"8.Mobiliario Y Equipo      ";cin>>ME;
+cout<<"9.Vehiculos                ";cin>>VH;
+cout<<"10.Equipo de Computacion   ";cin>>EC;
+cout<<"11.Deudores                ";cin>>DE;
+cout<<"12.Gastos de Instalacion   ";cin>>GI;
+cout<<"13.Papeleria y utilies     ";cin>>PU;
+cout<<"14.Proveedores                                    ";cin>>PRO;
+cout<<"15.Documentos por pagar                           ";cin>>DP;
+cout<<"16.Hipotecas                                      ";cin>>HP;
+cout<<"17.Acreedores                                     ";cin>>AC;
+debe = Cajabancos + clientes+Iva+Docc+MI+ME+VH+EC+DE+GI+PU; 
+haber = Ventas + Iva_por_pagar+PRO+DP+HP+AC; 
+capital = debe - haber;
+cout<<"18.Capital        :                              "<<capital<<endl;
+cout<<"                      __________________________________________"<<endl;
+cout<<"Totales                    "<<debe<<"                    "<<haber + capital<<endl;  
+cout<<"                      __________________________________________"<<endl;
+cout<<"                      __________________________________________"<<endl;
+if (capital<0 )  {
+
+cout<<"\n\n\n\nHa ingresado mal los valores ya que su capital es Negativo, por favor verifique las cantidades";		
+}              
+getch();
+return menu();	
+}
+
+
+
+
+void Jornalizacion (){
+int partida;
+bool repite = true;
+
+do{
+system("CLS");	
+cout<<"                  Elija el prototipo de Partida que desea Realizar"<<endl;
+cout<<"1. Partida De Venta  de mercaderia al Contado"<<endl;
+cout<<"2. Partida De compra de mercaderia al Contado"<<endl;
+cin>>partida;
+
+switch (partida){
+
+case 1 : {
+system("CLS");	
+double cb1,v1,cb2,v2,ivp1,ivp2;
+cout<<"	                        Venta de mercaderia al Contado"<<endl;
+cout<<"                       DEBE                               HABER    "<<endl;
+cout<<"\nCAJA Y BANCOS          ";cin>>cb1;
+v1=cb1/1.12;
+cout<<"  Ventas                                                    "<< fixed << setprecision(2)<<v1<<endl;
+ivp1=v1*0.12;
+cout<<"  Iva por pagar                                             "<< fixed << setprecision(2)<<ivp1<<endl;
+cb2=Cajabancos + cb1;
+Cajabancos = cb2; 
+v2=Ventas + v1; 
+Ventas = v2; 
+ivp2=Iva_por_pagar + ivp1;
+Iva_por_pagar =ivp2; 
+cout<<"                 ______________________________________________________"<<endl;
+cout<<"TOTALES                "<<cb1<<"                                  "<<v1+ivp1<<endl;
+cout<<"                 ______________________________________________________"<<endl;
+cout<<"                 ______________________________________________________";
+getch();
+break;	
+}
+
+case 2 :{
+	
+repite = false;		
+break;
+}
+
+		
+}
+}while(repite);
+
+return menu();
+}
+
+ void Balnce(){
+ system("CLS");	
+ cout<<"                        Balance de Saldos             "<<endl;
+ cout<<"                  DEBE                        HABER   "<<endl;
+ cout<<"CAJA Y BANCOS     "<<Cajabancos<<endl;
+ cout<<"Ventas                                         "<<Ventas;
+ cout<<"\nIva por pagar                                  "<<Iva_por_pagar;	 
+ 
+ getch();
+ return menu();
+ }
+
+
+void Resultados (){
+	
+}
+
+
+
+void General (){
+	
+}
+
+
+
+
+void Razones (){
+	
+}
+
+
+
+void miembros (){
+system("CLS");	
+	
+cout<<"           Nombre : Marlon Adrian Gonzalez Garzona       Carnet : 6990-19-12170"<<endl;
+cout<<"           Nombre : Marcos Sleyther Castellanos Lemus	 Carnet : 6990-19-9299"<<endl;
+cout<<"           Nombre : Luis Simon Lorenzo Gonzalez          Carnet : 6990-19-12141"<<endl;	
+cout<<"           Nombre : Eduardo Antonio Perez Ajquijay       Carnet : 6990-19-547";	
+cout<<"\n\n\n\nPresiones Enter para regresar al menú principal";
+getch ();
+return menu();	
+	
+}
+
+void version (){
+system("CLS");
+cout<< "                         Version del Programa 1.0.1  Copyrigth 2019 ";
+getch();
+return menu();	
+}
+	
