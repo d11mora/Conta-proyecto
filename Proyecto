@@ -15,7 +15,7 @@ void version ();
 using namespace std;
 
 
-double Cajabancos=0,Ventas=0,Iva_por_pagar=0,clientes=0,capital=0,Ivacc=0,Docc=0,MI=0,ME=0,VH=0,EC=0,IM=0,GI=0,PU=0,DP=0,PRO=0,HP=0;
+double Cajabancos=0,Ventas=0,Iva_por_pagar=0,clientes=0,capital=0,Ivacc=0,Docc=0,MI=0,ME=0,VH=0,EC=0,IM=0,GI=0,PU=0,DP=0,PRO=0,HP=0,comp=0;
 
 int main (){
 system ("color 71");
@@ -140,6 +140,7 @@ cout<<"2. Partida De Venta de mercaderia al Credito"<<endl;
 cout<<"3. Partida De Venta de mercaderia firmando Documentos por Cobrar"<<endl;
 cout<<"4. Partida De Venta de mercaderia al Credito Y firmando Documentos"<<endl;
 cout<<"5. Partida De Venta de mercaderia al Credito, Firmando Documentos y Pago al Contado"<<endl;
+cout<<"6. Partida De Compra  de mercaderia al Contado"<<endl;
 cin>>partida;
 
 switch (partida){
@@ -164,6 +165,8 @@ cout<<"                 ______________________________________________________"<
 cout<<"TOTALES                "<<cb1<<"                                  "<<v1+ivp1<<endl;
 cout<<"                 ______________________________________________________"<<endl;
 cout<<"                 ______________________________________________________";
+
+cout<<"\n\n\n\n\nPresione Enter para regresar al menu de Jornalizacion";
 getch();
 break;	
 }
@@ -188,6 +191,8 @@ cout<<"                 ______________________________________________________"<
 cout<<"TOTALES                "<<cl1<<"                                  "<<v3+ivp3<<endl;
 cout<<"                 ______________________________________________________"<<endl;
 cout<<"                 ______________________________________________________";
+
+cout<<"\n\n\n\n\nPresione Enter para regresar al menu de Jornalizacion";
 getch();	
 	
 break;
@@ -213,7 +218,8 @@ cout<<"                 ______________________________________________________"<
 cout<<"TOTALES                "<<docc1<<"                                "<<v5+ivp5<<endl;
 cout<<"                 ______________________________________________________"<<endl;
 cout<<"                 ______________________________________________________";	
-	
+
+cout<<"\n\n\n\n\nPresione Enter para regresar al menu de Jornalizacion";	
 getch();	
 break;
 }
@@ -241,6 +247,7 @@ cout<<"TOTALES                "<<docc3+cl3<<"                     "<<v7+ivp7<<en
 cout<<"                 ______________________________________________________"<<endl;
 cout<<"                 ______________________________________________________";	
 
+cout<<"\n\n\n\n\nPresione Enter para regresar al menu de Jornalizacion";
 getch();
 break;
 }
@@ -272,18 +279,42 @@ cout<<"TOTALES                "<<cb3+docc5+cl5<<"                     "<<v9+ivp9
 cout<<"                 ______________________________________________________"<<endl;
 cout<<"                 ______________________________________________________";		
 
+cout<<"\n\n\n\n\nPresione Enter para regresar al menu de Jornalizacion";
 getch();	
 break;
 }	
-case 6:{
-	
-	
-break;
+
+case 6: {
+system("CLS");
+
+double com1,com2,ivacc1,ivacc2,cb5,cb6;
+
+cout<<"         Compra de Mercaderia al  Contado    "<<endl;	
+cout<<"                           DEBE                   HABER    "<<endl;		
+cout<<"Caja y Bancos                                      ";cin>>cb5;
+com1 = cb5 / 1.12;
+ivacc1 =com1 * 0.12;
+cout<<"\nCompras                "<< fixed << setprecision(2)<<com1<<endl;
+cout<<"\nIva por cobrar         "<< fixed << setprecision(2)<<ivacc1<<endl;	
+cb6 = Cajabancos - cb5;
+Cajabancos = cb6;
+com2= comp+ com1;
+comp = com2;
+ivacc2 = Ivacc + ivacc1;
+Ivacc = ivacc2;
+cout<<"                 ______________________________________________________"<<endl;
+cout<<"TOTALES                "<<com1+ivacc1<<"                     "<<cb5<<endl;
+cout<<"                 ______________________________________________________"<<endl;
+cout<<"                 ______________________________________________________";	
+
+cout<<"\n\n\n\n\nPresione Enter para regresar al menu de Jornalizacion";
+getch();
+	break;	
 }
-case 7 :{
-	
-repite = false;		
-break;
+
+case 7 : {
+	repite = false;
+	break;
 }
 
 	
@@ -309,13 +340,14 @@ return menu();
  cout<<"Mercaderia I            " <<MI<<endl;
  cout<<"Papelería y Utiles      " <<PU<<endl;
  cout<<"Vehiculos               " <<VH<<endl;
+ cout<<"Compras                 " <<comp<<endl;
  cout<<"Ventas                                         "<<Ventas;
  cout<<"\nIva por pagar                                  "<<Iva_por_pagar;	
  cout<<"\nProveedores                                    "<<PRO;
  cout<<"\nHipotecas                                      "<<HP;
  cout<<"\nDocumentos por pagar                           "<<DP;
  cout<<"\nCapital                                        "<<capital;
- debe=Cajabancos+clientes+Docc+EC+GI+IM+Ivacc+ME+MI+PU+VH;
+ debe=Cajabancos+clientes+Docc+EC+GI+IM+Ivacc+ME+MI+PU+VH+comp;
  haber= Ventas + Iva_por_pagar+PRO+HP+DP+capital;
  cout<<"\n                      __________________________________________"<<endl;
  cout<<"Totales                    "<<debe<<"                  "<<haber<<endl;  
@@ -364,4 +396,3 @@ cout<< "                         Version del Programa 1.0.1  Copyrigth 2019 ";
 getch();
 return menu();	
 }
-	
