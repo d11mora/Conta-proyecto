@@ -141,6 +141,10 @@ cout<<"3. Partida De Venta de mercaderia firmando Documentos por Cobrar"<<endl;
 cout<<"4. Partida De Venta de mercaderia al Credito Y firmando Documentos"<<endl;
 cout<<"5. Partida De Venta de mercaderia al Credito, Firmando Documentos y Pago al Contado"<<endl;
 cout<<"6. Partida De Compra  de mercaderia al Contado"<<endl;
+cout<<"7. Partida De Compra  de mercaderia al Credito"<<endl;
+cout<<"8. Partida De Compra de meracaderia Firmando Documentos"<<endl;
+cout<<"9. Partida De Compra de meracaderia al Credito y Firmando Documentos"<<endl;
+cout<<"10. Partida De Compra de meracaderia al Contado, Credito y Firmando Documentos"<<endl;
 cin>>partida;
 
 switch (partida){
@@ -313,11 +317,127 @@ getch();
 }
 
 case 7 : {
-	repite = false;
+system("CLS");	
+double com3,com4,ivacc3,ivacc4,pro1,pro2;	
+cout<<"         Compra de Mercaderia al  Credito    "<<endl;	
+cout<<"                           DEBE                   HABER    "<<endl;		
+cout<<"Proveedores                                       ";cin>>pro1;
+com3 = pro1 / 1.12;
+ivacc3 = com3 * 0.12;
+cout<<"\nCompras                "<< fixed << setprecision(2)<<com3<<endl;
+cout<<"\nIva por cobrar         "<< fixed << setprecision(2)<<ivacc3<<endl;	
+com4 = com3 + comp;
+comp = com4;
+ivacc4 = ivacc3 + Ivacc;
+Ivacc = ivacc4;
+pro2=pro1 + PRO;
+PRO = pro2;
+cout<<"                 ______________________________________________________"<<endl;
+cout<<"TOTALES                "<<com3+ivacc3<<"                     "<<pro1<<endl;
+cout<<"                 ______________________________________________________"<<endl;
+cout<<"                 ______________________________________________________";	
+
+cout<<"\n\n\n\n\nPresione Enter para regresar al menu de Jornalizacion";
+getch();
+                       	
 	break;
 }
 
+case 8 : {
+system("CLS");
+double dp1,dp2,com5,com6,ivacc5,ivacc6;
+cout<<"         Compra de Mercaderia al  Credito Firmando Documentos   "<<endl;	
+cout<<"                           DEBE                   HABER    "<<endl;	
+cout<<"Documentos por Pagar                                ";cin>>dp1;	
+com5 = dp1 / 1.12;
+ivacc5 = com5 * 0.12;
+cout<<"\nCompras                "<< fixed << setprecision(2)<<com5<<endl;
+cout<<"\nIva por cobrar         "<< fixed << setprecision(2)<<ivacc5<<endl;	
+dp2 = dp1 + DP;
+DP =dp2;
+com6 = com5 + comp;
+comp = com6;
+ivacc6 = ivacc5 + Ivacc;
+Ivacc = ivacc6;
+cout<<"                 ______________________________________________________"<<endl;
+cout<<"TOTALES                "<<com5+ivacc5<<"                     "<<dp1<<endl;
+cout<<"                 ______________________________________________________"<<endl;
+cout<<"                 ______________________________________________________";	
+cout<<"\n\n\n\n\nPresione Enter para regresar al menu de Jornalizacion";
+getch();
+
+break;
+}
+
+case 9 : {
+system("CLS");	
+
+double dp3,dp4,pro3,pro4,com7,com8,ivacc7,ivacc8;
+
+cout<<"         Compra de Mercaderia al  Credito Y Firmando Documentos    "<<endl;	
+cout<<"                           DEBE                   HABER    "<<endl;	
+cout<<" Documetos por pagar                                 ";cin>>dp3;
+cout<<" Proveedores                                         ";cin>>pro3;
+com7= (dp3 + pro3)/1.12;
+ivacc7= com7 *0.12;
+cout<<"\nCompras                "<< fixed << setprecision(2)<<com7<<endl;
+cout<<"\nIva por cobrar         "<< fixed << setprecision(2)<<ivacc7<<endl;
+dp4 = dp3 + DP;
+DP =dp4;
+pro4= pro3 + PRO;
+PRO = pro4;
+com8= com7 + comp;
+comp = com8;
+ivacc8 =ivacc7 + Ivacc;
+Ivacc = ivacc8;
+cout<<"                 ______________________________________________________"<<endl;
+cout<<"TOTALES                "<<com7+ivacc7<<"                     "<<dp3+pro3<<endl;
+cout<<"                 ______________________________________________________"<<endl;
+cout<<"                 ______________________________________________________";	
+cout<<"\n\n\n\n\nPresione Enter para regresar al menu de Jornalizacion";
+getch();
+
 	
+	break;
+}
+	
+case 10 :  {
+system("CLS");	
+double 	cb7,cb8,pro5,pro6,dp5,dp6,com9,com10,ivacc9,ivacc10;
+
+cout<<"         Compra de Mercaderia al Contado, Credito Y Firmando Documentos    "<<endl;	
+cout<<"                           DEBE                   HABER    "<<endl;	
+cout<<" Caja Y Bancos                                       ";cin>>cb7;
+cout<<" Proveedores                                         ";cin>>pro5;	
+cout<<" Documetos por pagar                                 ";cin>>dp5;
+com9 = (cb7 + pro5 + dp5)/1.12;
+ivacc9 = com9 * 0.12;
+cout<<"\nCompras                "<< fixed << setprecision(2)<<com9<<endl;
+cout<<"\nIva por cobrar         "<< fixed << setprecision(2)<<ivacc9<<endl;
+cb8 = Cajabancos - cb7;
+Cajabancos = cb8;
+pro6 = pro5 + PRO;
+PRO = pro6;
+dp6 = dp5 + DP;
+DP = dp6;
+com10 = com9 + comp;
+comp = com10;
+ivacc10 = ivacc9 + Ivacc;
+Ivacc = ivacc10;
+cout<<"                 ______________________________________________________"<<endl;
+cout<<"TOTALES                "<<com9+ivacc9<<"                     "<<cb7+pro5+dp5<<endl;
+cout<<"                 ______________________________________________________"<<endl;
+cout<<"                 ______________________________________________________";	
+cout<<"\n\n\n\n\nPresione Enter para regresar al menu de Jornalizacion";
+getch();
+break;
+}
+
+case 11 :{
+	
+repite = false;		
+	break;
+}	
 }
 }while(repite);
 
@@ -396,3 +516,4 @@ cout<< "                         Version del Programa 1.0.1  Copyrigth 2019 ";
 getch();
 return menu();	
 }
+	
