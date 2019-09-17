@@ -479,7 +479,31 @@ return menu();
 
 
 void Resultados (){
-	
+int ventas=100;
+int devventas=25;
+int ventasb=0;
+int costos=60;
+int utilidadb=0;
+
+cout<<"Estado de resultados"<<endl;
+cout<<"Estado de resultados de 1/1/2019 al 31/12/2019"<<"\n\n";
+
+cout<<"Total De las ventas			"<<fixed<<setprecision(2)<<ventas<<endl;
+cout<<"Devolucion en venas 					"<<fixed<<setprecision(2)<<devventas<<endl;
+cout<<"-------------------------------------------------------------------------------"<<endl;
+ventasb=ventas-devventas;
+cout<<"Ventas Brutas				"<<fixed<<setprecision(2)<<ventasb<<"\n\n";
+
+system("pause");
+system("cls");
+
+cout<<"Ventas Brutas				"<<fixed<<setprecision(2)<<ventasb<<endl;
+cout<<"Costos						"<<fixed<<setprecision(2)<<costos<<endl;
+cout<<"-------------------------------------------------------------------------------"<<endl;
+utilidadb=ventasb-costos;
+cout<<"Utilidad Bruta				"<<fixed<<setprecision(2)<<utilidadb<<endl;
+getch();
+return menu();
 }
 
 
