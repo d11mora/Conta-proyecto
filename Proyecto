@@ -15,7 +15,9 @@ void version ();
 using namespace std;
 
 
-double Cajabancos=0,Ventas=0,Iva_por_pagar=0,clientes=0,capital=0,Ivacc=0,Docc=0,MI=0,ME=0,VH=0,EC=0,IM=0,GI=0,PU=0,DP=0,PRO=0,HP=0,comp=0,DESC=0,SV,SA;
+double Cajabancos=0,Ventas=0,Iva_por_pagar=0,clientes=0,capital=0,Ivacc=0,
+Docc=0,MI=0,ME=0,VH=0,EC=0,IM=0,GI=0,PU=0,DP=0,PRO=0,HP=0,comp=0,DESC=0,SV=0,
+SA=0,DEVVENTAS=0,DEVCOM;
 
 int main (){
 system ("color 71");
@@ -149,6 +151,8 @@ cout<<"12. Partida De Compra de Equipo de Computo"<<endl;
 cout<<"13. Partida De Abono a Documentos por pagar y descuento por pronto pago"<<endl;
 cout<<"14. Partida De Abono a Documentos por pagar sin descuento"<<endl;
 cout<<"15. Partida de Sueldos"<<endl;
+cout<<"16. Partida de Devolucion de Mercaderia por Clientes"<<endl;
+cout<<"17. Partida de Devolucion de Mercaderia A   Proveedores"<<endl;
 cin>>partida;
 
 switch (partida){
@@ -554,11 +558,61 @@ getch();
 		break;
 }
 case 16 : {
-	
-repite = false;	
+system("CLS");
+double devsv1,devsv2,cb19,cb20,ivp11,ivp12;
+cout<<"         	Devolucion de Mercadería por Clientes  "<<endl;
+cout<<"                           DEBE                   HABER    "<<endl;
+cout<<" Caja Y Bancos                                    ";cin>>cb19;
+devsv1 = cb19/1.12;
+cout<<"\nDevoluciones S/ Ventas     "<< fixed << setprecision(2)<<devsv1<<endl;
+ivp11 = devsv1 * 0.12;
+cout<<"Iva por Pagar              "<< fixed << setprecision(2)<<ivp11<<endl;
+cb20 = Cajabancos - cb19;
+Cajabancos = cb20;
+devsv2 = DEVVENTAS + devsv1;
+DEVVENTAS = devsv2;
+ivp12 = Iva_por_pagar - ivp11;
+Iva_por_pagar = ivp12;
+cout<<"                 ______________________________________________________"<<endl;
+cout<<"TOTALES                    "<<devsv1+ivp11<<"                 "<<cb19<<endl;
+cout<<"                 ______________________________________________________"<<endl;
+cout<<"                 ______________________________________________________";	
+cout<<"\n\n\n\n\nPresione Enter para regresar al menu de Jornalizacion";
+getch();	
 	break;
 }
+
+case 17: {	
+system("CLS");
+double pro9,pro10,devc1,devc2,ivacc13,ivacc14;
+
+cout<<"         	Devolucion de Mercadería A Proveedores "<<endl;
+cout<<"                           DEBE                   HABER    "<<endl;
+cout<<"Proveedores               ";cin>>pro9;
+devc1 = pro9 /1.12;
+cout<<"\nDevoluciones S/ Compras                         "<< fixed << setprecision(2)<<devc1<<endl;
+ivacc13 = devc1 * 0.12;
+cout<<"\nIva por cobrar                                  "<< fixed << setprecision(2)<<ivacc13<<endl;
+pro10 = PRO - pro9;
+PRO = pro10;
+devc2= DEVCOM + devc1;
+DEVCOM = devc2;
+ivacc14 = Ivacc - ivacc13;
+Ivacc = ivacc14;
+cout<<"                 ______________________________________________________"<<endl;
+cout<<"TOTALES                    "<<pro9<<"                 "<<devc1+ivacc13<<endl;
+cout<<"                 ______________________________________________________"<<endl;
+cout<<"                 ______________________________________________________";	
+cout<<"\n\n\n\n\nPresione Enter para regresar al menu de Jornalizacion";
+getch();
+	break;
+	}
 	
+case 18 : {
+	
+repite = false;		
+	break;
+}	
 }
 }while(repite);
 
@@ -584,15 +638,17 @@ return menu();
  cout<<"Compras                 " <<comp<<endl;
  cout<<"Sueldos Sala de Ventas  " <<SV<<endl;
  cout<<"Sueldos Administracion  " <<SA<<endl;
+ cout<<"Devoluciones S/Ventas   " <<DEVVENTAS<<endl;
  cout<<"Ventas                                         "<<Ventas;
  cout<<"\nIva por pagar                                  "<<Iva_por_pagar;	
  cout<<"\nProveedores                                    "<<PRO;
  cout<<"\nHipotecas                                      "<<HP;
  cout<<"\nDocumentos por pagar                           "<<DP;
  cout<<"\nDescuentos Percibidos                          "<<DESC;
+ cout<<"\nDevoluciones S/Compras                         "<<DEVCOM;
  cout<<"\nCapital                                        "<<capital;
- debe=Cajabancos+clientes+Docc+EC+GI+IM+Ivacc+ME+MI+PU+VH+comp+SV+SA;
- haber= Ventas + Iva_por_pagar+PRO+HP+DP+capital+DESC;
+ debe=Cajabancos+clientes+Docc+EC+GI+IM+Ivacc+ME+MI+PU+VH+comp+SV+SA+DEVVENTAS;
+ haber= Ventas + Iva_por_pagar+PRO+HP+DP+capital+DESC+DEVCOM;
  cout<<"\n                      __________________________________________"<<endl;
  cout<<"Totales                    "<<debe<<"               "<<haber<<endl;  
  cout<<"                      __________________________________________"<<endl;
