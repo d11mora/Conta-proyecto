@@ -15,7 +15,7 @@ void version ();
 using namespace std;
 
 
-double Cajabancos=0,Ventas=0,Iva_por_pagar=0,clientes=0,capital=0,Ivacc=0,Docc=0,MI=0,ME=0,VH=0,EC=0,IM=0,GI=0,PU=0,DP=0,PRO=0,HP=0,comp=0;
+double Cajabancos=0,Ventas=0,Iva_por_pagar=0,clientes=0,capital=0,Ivacc=0,Docc=0,MI=0,ME=0,VH=0,EC=0,IM=0,GI=0,PU=0,DP=0,PRO=0,HP=0,comp=0,DESC=0;
 
 int main (){
 system ("color 71");
@@ -78,7 +78,6 @@ break;
 case 8:
 version ();
 case 9:{
-
 
 repite = false;	
 }
@@ -145,6 +144,9 @@ cout<<"7. Partida De Compra  de mercaderia al Credito"<<endl;
 cout<<"8. Partida De Compra de meracaderia Firmando Documentos"<<endl;
 cout<<"9. Partida De Compra de meracaderia al Credito y Firmando Documentos"<<endl;
 cout<<"10. Partida De Compra de meracaderia al Contado, Credito y Firmando Documentos"<<endl;
+cout<<"11. Partida De Abono a Deuda adquirida con los proveedores"<<endl;
+cout<<"12. Partida De Compra de Equipo de Computo"<<endl;
+cout<<"13. Partida De Abono a Documentos por pagar y descuento por pronto pago"<<endl;
 cin>>partida;
 
 switch (partida){
@@ -434,10 +436,84 @@ break;
 }
 
 case 11 :{
+system("CLS");	
+double pro7,pro8,cb9,cb10;
+cout<<"         Abono a Deuda con proveedores   "<<endl;	
+cout<<"                           DEBE                   HABER    "<<endl;
+cout<<" Proveedores              ";cin>>pro7;
+cb9 = pro7;
+cout<<" Caja Y Bancos                                       "<<cb9<<endl;
+pro8 = PRO - pro7;
+PRO = pro8;
+cb10= Cajabancos - cb9;
+Cajabancos = cb10;
+cout<<"                 ______________________________________________________"<<endl;
+cout<<"TOTALES                    "<<pro7<<"                     "<<cb9<<endl;
+cout<<"                 ______________________________________________________"<<endl;
+cout<<"                 ______________________________________________________";	
+cout<<"\n\n\n\n\nPresione Enter para regresar al menu de Jornalizacion";
+getch();
+break;
+}
+case 12 :{
+system("CLS");
+double ec1,ec2,ivacc11,ivacc12,cb11,cb12;
+cout<<"         Compra de Equipo de computo   "<<endl;	
+cout<<"                           DEBE                   HABER    "<<endl;
+cout<<" Caja Y Bancos                                    ";cin>>cb11;
+ec1 = cb11 / 1.12;
+cout<<"\nEquipo de Computacion    "<< fixed << setprecision(2)<<ec1<<endl;	
+ivacc11= ec1*0.12;
+cout<<"\nIva por cobrar           "<< fixed << setprecision(2)<<ivacc11<<endl;
+cb12 = Cajabancos - cb11;
+Cajabancos = cb12;
+ec2 = EC + ec1;
+EC = ec2;
+ivacc12 = Ivacc + ivacc11;
+Ivacc = ivacc12;
+cout<<"                 ______________________________________________________"<<endl;
+cout<<"TOTALES                    "<<ec1+ivacc11<<"                 "<<cb11<<endl;
+cout<<"                 ______________________________________________________"<<endl;
+cout<<"                 ______________________________________________________";	
+cout<<"\n\n\n\n\nPresione Enter para regresar al menu de Jornalizacion";
+getch();
+	
+
+	break;
+}
+
+case 13 :{
+system("CLS");
+double dp7,dp8,desc1,desc2,cb13,cb14;
+
+cout<<"         Abono a deuda sobre Documentos con descuentos   "<<endl;
+cout<<"                           DEBE                   HABER    "<<endl;
+cout<<"Documentos por pagar      ";cin>>dp7;
+cout<<"\nDescuentos Percibidos                             ";cin>>desc1;
+cb13 = dp7-desc1;
+cout<<" Caja Y Bancos                                    "<<cb13<<endl;
+dp8 = DP - dp7;
+DP = dp8;
+desc2 = DESC + desc1;
+DESC = desc2;
+cb14 = Cajabancos - cb13;
+Cajabancos = cb14;
+cout<<"                 ______________________________________________________"<<endl;
+cout<<"TOTALES                    "<<dp7<<"                 "<<desc1+cb13<<endl;
+cout<<"                 ______________________________________________________"<<endl;
+cout<<"                 ______________________________________________________";	
+cout<<"\n\n\n\n\nPresione Enter para regresar al menu de Jornalizacion";
+getch();
+			
+	break;
+}
+case 14 : {
+	
 	
 repite = false;		
 	break;
-}	
+}
+	
 }
 }while(repite);
 
@@ -466,11 +542,12 @@ return menu();
  cout<<"\nProveedores                                    "<<PRO;
  cout<<"\nHipotecas                                      "<<HP;
  cout<<"\nDocumentos por pagar                           "<<DP;
+ cout<<"\nDescuentos Percibidos                          "<<DESC;
  cout<<"\nCapital                                        "<<capital;
  debe=Cajabancos+clientes+Docc+EC+GI+IM+Ivacc+ME+MI+PU+VH+comp;
- haber= Ventas + Iva_por_pagar+PRO+HP+DP+capital;
+ haber= Ventas + Iva_por_pagar+PRO+HP+DP+capital+DESC;
  cout<<"\n                      __________________________________________"<<endl;
- cout<<"Totales                    "<<debe<<"                  "<<haber<<endl;  
+ cout<<"Totales                    "<<debe<<"               "<<haber<<endl;  
  cout<<"                      __________________________________________"<<endl;
  cout<<"                      __________________________________________"<<endl;
  getch();
@@ -479,31 +556,7 @@ return menu();
 
 
 void Resultados (){
-int ventas=100;
-int devventas=25;
-int ventasb=0;
-int costos=60;
-int utilidadb=0;
-
-cout<<"Estado de resultados"<<endl;
-cout<<"Estado de resultados de 1/1/2019 al 31/12/2019"<<"\n\n";
-
-cout<<"Total De las ventas			"<<fixed<<setprecision(2)<<ventas<<endl;
-cout<<"Devolucion en venas 					"<<fixed<<setprecision(2)<<devventas<<endl;
-cout<<"-------------------------------------------------------------------------------"<<endl;
-ventasb=ventas-devventas;
-cout<<"Ventas Brutas				"<<fixed<<setprecision(2)<<ventasb<<"\n\n";
-
-system("pause");
-system("cls");
-
-cout<<"Ventas Brutas				"<<fixed<<setprecision(2)<<ventasb<<endl;
-cout<<"Costos						"<<fixed<<setprecision(2)<<costos<<endl;
-cout<<"-------------------------------------------------------------------------------"<<endl;
-utilidadb=ventasb-costos;
-cout<<"Utilidad Bruta				"<<fixed<<setprecision(2)<<utilidadb<<endl;
-getch();
-return menu();
+	
 }
 
 
