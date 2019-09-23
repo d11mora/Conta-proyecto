@@ -17,7 +17,8 @@ using namespace std;
 
 double Cajabancos=0,Ventas=0,Iva_por_pagar=0,clientes=0,capital=0,Ivacc=0,
 Docc=0,MI=0,ME=0,VH=0,EC=0,IM=0,GI=0,PU=0,DP=0,PRO=0,HP=0,comp=0,DESC=0,SV=0,
-SA=0,DEVVENTAS=0,DEVCOM;
+SA=0,DEVVENTAS=0,DEVCOM,INTG=0,DEPMB=0,DEPEC=0,DEPVH=0,AMORGO=0,
+DEPACUMMB=0,DEPACUMEC=0,DEPACUMVH,AMORACUMGO=0;
 
 int main (){
 system ("color 71");
@@ -153,6 +154,10 @@ cout<<"14. Partida De Abono a Documentos por pagar sin descuento"<<endl;
 cout<<"15. Partida de Sueldos"<<endl;
 cout<<"16. Partida de Devolucion de Mercaderia por Clientes"<<endl;
 cout<<"17. Partida de Devolucion de Mercaderia A   Proveedores"<<endl;
+cout<<"18. Partida de Pago a Hipotecas Bancarias"<<endl;
+cout<<"19. Partida de Abono de Clientes"<<endl;
+cout<<"20. Partida de Abono de Documentos por Cobrar"<<endl;
+cout<<"21. Partida de Depreciaciones y Amortizaciones"<<endl;
 cin>>partida;
 
 switch (partida){
@@ -609,7 +614,113 @@ getch();
 	}
 	
 case 18 : {
+	system("CLS");
+double hp1,hp2,intg1,intg2,cb21,cb22;	
 	
+cout<<"         	Abono a Hipoteca Bancaria "<<endl;
+cout<<"                           DEBE                   HABER    "<<endl;
+cout<<"Hipotecas                 ";cin>>hp1;
+cout<<"Intereses Gasto           ";cin>>intg1;
+cb21 = hp1 + intg1;
+cout<<"\nCaja Y Bancos                                    "<<cb21<<endl;
+hp2 = HP - hp1;
+HP = hp2;
+intg2 = INTG + intg1;
+INTG = intg2;
+cb22= Cajabancos - cb21;
+Cajabancos = cb22;
+cout<<"                 ______________________________________________________"<<endl;
+cout<<"TOTALES                    "<<hp1+intg1<<"                "<<cb21<<endl;
+cout<<"                 ______________________________________________________"<<endl;
+cout<<"                 ______________________________________________________";	
+cout<<"\n\n\n\n\nPresione Enter para regresar al menu de Jornalizacion";
+getch();
+
+	
+	break;
+}
+case 19 :{
+ system("CLS");
+ double cb23,cb24,clie1,clie2;
+cout<<"         	Abono de Clientes "<<endl;
+cout<<"                           DEBE                   HABER    "<<endl;
+cout<<"Caja y Bancos             ";cin>>cb23; 
+clie1 = cb23;
+cout<<"\nClientes                                        "<<clie1<<endl;
+cb24 = Cajabancos + cb23;
+Cajabancos = cb24;
+clie2= clientes - clie1;
+clientes = clie2;
+cout<<"                 ______________________________________________________"<<endl;
+cout<<"TOTALES                    "<<cb23<<"                "<<clie1<<endl;
+cout<<"                 ______________________________________________________"<<endl;
+cout<<"                 ______________________________________________________";	
+cout<<"\n\n\n\n\nPresione Enter para regresar al menu de Jornalizacion";
+getch();
+	 	
+	break;
+} 
+case 20: {
+	 system("CLS");
+double cb25,cb26,docc1,docc2;	 
+cout<<"                          Abono a Documentos por cobrar "<<endl;
+cout<<"                           DEBE                   HABER    "<<endl;
+cout<<"Caja y Bancos             ";cin>>cb25;
+docc1 = cb25;
+cout<<"\nDocumentos por cobrar                             "<<docc1<<endl;
+cb26=Cajabancos  + cb25;
+Cajabancos = cb26;
+docc2 = Docc - docc1;
+Docc = docc2;
+cout<<"                 ______________________________________________________"<<endl;
+cout<<"TOTALES                    "<<cb25<<"                "<<docc1<<endl;
+cout<<"                 ______________________________________________________"<<endl;
+cout<<"                 ______________________________________________________";	
+cout<<"\n\n\n\n\nPresione Enter para regresar al menu de Jornalizacion";
+getch();	
+	break;
+}
+
+case 21:{
+system("CLS");
+double depmb1,depec1,depvh1,agi1,dacummb1,dacumec1,dacvh1,acumgo1;
+cout<<"                     Partida De Depreciaciones y Amortizaciones "<<endl;
+cout<<"                                        DEBE                   HABER    "<<endl;
+depmb1 = ME * 0.20;
+cout<<"Depreciacion Mobiliario y Equipo        "<<depmb1<<endl;
+depec1 = EC * 0.33;
+cout<<"Depreciacione Equipo de Computo         "<<depec1<<endl;
+depvh1=VH * 0.20;
+cout<<"Depreciacione Vehiculos                 "<<depvh1<<endl;
+agi1 = GI * 0.10;
+cout<<"Amortizacion Gastos de Organizacion     "<<agi1<<endl;
+dacummb1 = depmb1;
+cout<<"\n\nDepreciacion Acumulada Mobiliario y Equipo                       "<<dacummb1<<endl;
+dacumec1 = depec1;
+cout<<"Depreciacion Acumulada Equipo de Computo                         "<<dacumec1<<endl;
+dacvh1 = depvh1;
+cout<<"Depreciacion Acumulada Vehiculos                                 "<<dacvh1<<endl;
+acumgo1 = agi1;
+cout<<"Amortizacion Acumulada Gastos de Organizacion                    "<<acumgo1<<endl;
+DEPMB = depmb1;
+DEPEC = depec1;
+DEPVH = depvh1;
+AMORGO = agi1;
+DEPACUMMB = dacummb1;
+DEPACUMEC = dacumec1;
+DEPACUMVH = dacvh1;
+AMORACUMGO = acumgo1;
+cout<<"                 ______________________________________________________"<<endl;
+cout<<"TOTALES                                 "<<depmb1+depec1+depvh1+agi1<<"                        "<<dacummb1+dacumec1+depvh1+acumgo1<<endl;
+cout<<"                 ______________________________________________________"<<endl;
+cout<<"                 ______________________________________________________";	
+cout<<"\n\n\n\n\nPresione Enter para regresar al menu de Jornalizacion";
+getch();
+	break;
+}
+
+case 22 : {
+		
 repite = false;		
 	break;
 }	
@@ -623,34 +734,43 @@ return menu();
  double debe = 0, haber = 0;	
  system("CLS");	
  cout<<"                        Balance de Saldos             "<<endl;
- cout<<"                       DEBE                     HABER   "<<endl;
- cout<<"CAJA Y BANCOS           "  <<Cajabancos<<endl;
- cout<<"Clientes                "  <<clientes<<endl;
- cout<<"Documentos por Cobrar   "  <<Docc<<endl;
- cout<<"Equipo de Computacion   "  <<EC<<endl;
- cout<<"Gastos de Instalacion   "  <<GI<<endl;
- cout<<"Inmbuebles              " <<IM<<endl;
- cout<<"Iva por Cobrar          " <<Ivacc<<endl;
- cout<<"Mobiliario y Equipo     " <<ME<<endl;
- cout<<"Mercaderia I            " <<MI<<endl;
- cout<<"Papelería y Utiles      " <<PU<<endl;
- cout<<"Vehiculos               " <<VH<<endl;
- cout<<"Compras                 " <<comp<<endl;
- cout<<"Sueldos Sala de Ventas  " <<SV<<endl;
- cout<<"Sueldos Administracion  " <<SA<<endl;
- cout<<"Devoluciones S/Ventas   " <<DEVVENTAS<<endl;
- cout<<"Ventas                                         "<<Ventas;
- cout<<"\nIva por pagar                                  "<<Iva_por_pagar;	
- cout<<"\nProveedores                                    "<<PRO;
- cout<<"\nHipotecas                                      "<<HP;
- cout<<"\nDocumentos por pagar                           "<<DP;
- cout<<"\nDescuentos Percibidos                          "<<DESC;
- cout<<"\nDevoluciones S/Compras                         "<<DEVCOM;
- cout<<"\nCapital                                        "<<capital;
- debe=Cajabancos+clientes+Docc+EC+GI+IM+Ivacc+ME+MI+PU+VH+comp+SV+SA+DEVVENTAS;
- haber= Ventas + Iva_por_pagar+PRO+HP+DP+capital+DESC+DEVCOM;
+ cout<<"                            DEBE                     HABER   "<<endl;
+ cout<<"Caja y Bancos               "  <<Cajabancos<<endl;
+ cout<<"Clientes                    "  <<clientes<<endl;
+ cout<<"Documentos por Cobrar       "  <<Docc<<endl;
+ cout<<"Equipo de Computacion       "  <<EC<<endl;
+ cout<<"Gastos de Instalacion       "  <<GI<<endl;
+ cout<<"Inmbuebles                  " <<IM<<endl;
+ cout<<"Iva por Cobrar              " <<Ivacc<<endl;
+ cout<<"Mobiliario y Equipo         " <<ME<<endl;
+ cout<<"Mercaderia I                " <<MI<<endl;
+ cout<<"Papelería y Utiles          " <<PU<<endl;
+ cout<<"Vehiculos                   " <<VH<<endl;
+ cout<<"Compras                     " <<comp<<endl;
+ cout<<"Sueldos Sala de Ventas      " <<SV<<endl;
+ cout<<"Sueldos Administracion      " <<SA<<endl;
+ cout<<"Devoluciones S/Ventas       " <<DEVVENTAS<<endl;
+ cout<<"Intereses Gasto             " <<INTG<<endl;
+ cout<<"Depreciacion Mob y Equipo   " <<DEPMB<<endl;
+ cout<<"Depreciacion E de Computo   " <<DEPEC<<endl;
+ cout<<"Depreciacion Vehiculos      " <<DEPVH<<endl;
+ cout<<"Amortizacion Gastos de Org. " <<AMORGO<<endl;
+ cout<<"Ventas                                           "<<Ventas;
+ cout<<"\nIva por pagar                                    "<<Iva_por_pagar;	
+ cout<<"\nProveedores                                      "<<PRO;
+ cout<<"\nHipotecas                                        "<<HP;
+ cout<<"\nDocumentos por pagar                             "<<DP;
+ cout<<"\nDescuentos Percibidos                            "<<DESC;
+ cout<<"\nDevoluciones S/Compras                           "<<DEVCOM;
+ cout<<"\nDepreciacion Acumulada Mobiliario y Equipo       "<<DEPACUMMB;
+ cout<<"\nDepreciacion Acumulada Equipo de Computo         "<<DEPACUMEC;
+ cout<<"\nDepreciacion Acumulada Vehiculos                 "<<DEPVH;
+ cout<<"\nAmortizacion Acumulada Gastos de Organizacion    "<<AMORACUMGO;
+ cout<<"\nCapital                                          "<<capital;
+ debe=Cajabancos+clientes+Docc+EC+GI+IM+Ivacc+ME+MI+PU+VH+comp+SV+SA+DEVVENTAS+INTG+DEPMB+DEPEC+DEPVH+AMORGO;
+ haber= Ventas + Iva_por_pagar+PRO+HP+DP+capital+DESC+DEVCOM+DEPACUMMB+DEPACUMEC+DEPVH+AMORACUMGO;
  cout<<"\n                      __________________________________________"<<endl;
- cout<<"Totales                    "<<debe<<"               "<<haber<<endl;  
+ cout<<"Totales                    "<<debe<<"                     "<<haber<<endl;  
  cout<<"                      __________________________________________"<<endl;
  cout<<"                      __________________________________________"<<endl;
  getch();
@@ -696,3 +816,4 @@ cout<< "                         Version del Programa 1.0.1  Copyrigth 2019 ";
 getch();
 return menu();	
 }
+	
