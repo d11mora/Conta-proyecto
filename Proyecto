@@ -2,818 +2,1058 @@
 #include <conio.h>
 #include<stdlib.h>
 #include<iomanip>
-void menu ();
-void Apertura ();
-void Jornalizacion ();
+void menu();
+void Apertura();
+void Jornalizacion();
 void Balnce();
-void Resultados ();
-void General ();
-void Razones ();
-void miembros ();
-void version ();
-			
+void Resultados();
+void General();
+void Razones();
+void miembros();
+void version();
+
 using namespace std;
 
 
-double Cajabancos=0,Ventas=0,Iva_por_pagar=0,clientes=0,capital=0,Ivacc=0,
-Docc=0,MI=0,ME=0,VH=0,EC=0,IM=0,GI=0,PU=0,DP=0,PRO=0,HP=0,comp=0,DESC=0,SV=0,
-SA=0,DEVVENTAS=0,DEVCOM,INTG=0,DEPMB=0,DEPEC=0,DEPVH=0,AMORGO=0,
-DEPACUMMB=0,DEPACUMEC=0,DEPACUMVH,AMORACUMGO=0;
+double Cajabancos = 0, Ventas = 0, Iva_por_pagar = 0, clientes = 0, capital = 0, Ivacc = 0,
+Docc = 0, MI = 0, ME = 0, VH = 0, EC = 0, IM = 0, GI = 0, PU = 0, DP = 0, PRO = 0, HP = 0, comp = 0, DESC = 0, SV = 0,PG=0,PG2=0,
+SA = 0, DEVVENTAS = 0, DEVCOM, INTG = 0, DEPMB = 0, DEPEC = 0, DEPVH = 0, AMORGO = 0,PRG =0, VENTASNETAS = 0,
+DEPACUMMB = 0, DEPACUMEC = 0, DEPACUMVH, AMORACUMGO = 0,MI2=0, COMPRASNETAS=0, MERCAD=0, COSTOV=0,GOP = 0,GOP1 = 0,GOP2 = 0, PRODUCGASTOS= 0, 
+PEROGANAN=0, ACCIRCULANTE =0, ACFIJO=0, ACDIFERIDO=0, SUMAACTIVO=0, PASIVOCIR = 0, PASIVOFIJO = 0, SUMAPASIVO =0;
 
-int main (){
-system ("color 71");
-menu ();
-	
-return 0;
+int main() {
+	system("color 71");
+	menu();
+
+	return 0;
 }
 
 
-void menu (){
-	
-bool repite = true;	
-int opcion;
+void menu() {
 
-do {
-system("CLS");
-cout<<"                                      Menu Principal Proyecto de Contabilidad"<<endl;
-cout<<"                                                  UMG SEDE ZONA 16"<<endl;
-cout<<"1.Saldos Iniciales                                        "<<endl;
-cout<<"2.Jornalizacion                                           "<<endl;
-cout<<"3.Balance de Saldos                                        "<<endl;
-cout<<"4.Estado de Perdidas Y Ganacias                           "<<endl;
-cout<<"5.Balance General                                         "<<endl;
-cout<<"6.Razones Finacieras                                      "<<endl;
-cout<<"7.Desarrolladores del Sistema                             "<<endl;
-cout<<"8.Version del Programa                                    "<<endl;
-cout<<"9.Salir                                                   "<<endl;
-cout<<"\nElija una de Las Opciones: ";cin>>opcion;
+	bool repite = true;
+	int opcion;
 
-switch (opcion){
-	
-case  1: {
-Apertura ();
-break;
-}
+	do {
+		system("CLS");
+		cout << "                                      Menu Principal Proyecto de Contabilidad" << endl;
+		cout << "                                                  UMG SEDE ZONA 16" << endl;
+		cout << "1.Saldos Iniciales                                        " << endl;
+		cout << "2.Jornalizacion                                           " << endl;
+		cout << "3.Balance de Saldos                                        " << endl;
+		cout << "4.Estado de Perdidas Y Ganacias                           " << endl;
+		cout << "5.Balance General                                         " << endl;
+		cout << "6.Razones Finacieras                                      " << endl;
+		cout << "7.Desarrolladores del Sistema                             " << endl;
+		cout << "8.Version del Programa                                    " << endl;
+		cout << "9.Salir                                                   " << endl;
+		cout << "\nElija una de Las Opciones: "; cin >> opcion;
 
-case 2:{	
-Jornalizacion ();	
-break;
-}
+		switch (opcion) {
 
+		case  1: {
+			Apertura();
+			break;
+		}
 
-case 3:{	
-Balnce();	
-break;
-}
-
-case 4:
-Resultados ();
-break;
-case 5:
-General ();	
-break;
-case 6: 
-Razones ();	
-break;
-case 7: 
-miembros ();
-break;
-case 8:
-version ();
-case 9:{
-
-repite = false;	
-}
-}
-} while (repite);
-
-}
+		case 2: {
+			Jornalizacion();
+			break;
+		}
 
 
-void Apertura (){
-system ("color 82");
-double debe,haber;	
-system("CLS");
-system ("color 73");
-cout<<"             Saldos Iniciales o  Partida de Apertura"<<endl;
-cout<<"                           DEBE                  HABER  "<<endl;
-cout<<"1.Caja y Bancos :          ";cin>>Cajabancos;
-cout<<"2.Clientes :               ";cin>>clientes;
-cout<<"3.Iva por cobrar:          ";cin>>Ivacc;
-cout<<"4.Documento por cobrar     ";cin>>Docc;
-cout<<"5.Mercaderia I             ";cin>>MI;	
-cout<<"6.Mobiliario Y Equipo      ";cin>>ME;
-cout<<"7.Vehiculos                ";cin>>VH;
-cout<<"8.Equipo de Computacion    ";cin>>EC;
-cout<<"9.Inmuebles                ";cin>>IM;
-cout<<"10.Gastos de Instalacion   ";cin>>GI;
-cout<<"11.Papeleria y utilies     ";cin>>PU;
-cout<<"12.Proveedores                                    ";cin>>PRO;
-cout<<"13.Documentos por pagar                           ";cin>>DP;
-cout<<"14.Hipotecas                                      ";cin>>HP;
-debe = Cajabancos + clientes+Ivacc+Docc+MI+ME+VH+EC+IM+GI+PU; 
-haber = PRO+DP+HP; 
-capital = debe - haber;
-cout<<"18.Capital        :                               "<<capital<<endl;
-cout<<"                      __________________________________________"<<endl;
-cout<<"Totales                    "<<debe<<"                   "<<haber + capital<<endl;  
-cout<<"                      __________________________________________"<<endl;
-cout<<"                      __________________________________________"<<endl;
-if (capital<0 )  {
+		case 3: {
+			Balnce();
+			break;
+		}
 
-cout<<"\n\n\n\nHa ingresado mal los valores ya que su capital es Negativo, por favor verifique las cantidades";		
-}              
-getch();
-return menu();	
+		case 4:
+			Resultados();
+			break;
+		case 5:
+			General();
+			break;
+		case 6:
+			Razones();
+			break;
+		case 7:
+			miembros();
+			break;
+		case 8:
+			version();
+		case 9: {
+
+			repite = false;
+		}
+		}
+	} while (repite);
+
 }
 
 
-
-
-void Jornalizacion (){
-int partida;
-bool repite = true;
-
-do{
-system("CLS");	
-cout<<"                  Elija el prototipo de Partida que desea Realizar"<<endl;
-cout<<"1. Partida De Venta  de mercaderia al Contado"<<endl;
-cout<<"2. Partida De Venta de mercaderia al Credito"<<endl;
-cout<<"3. Partida De Venta de mercaderia firmando Documentos por Cobrar"<<endl;
-cout<<"4. Partida De Venta de mercaderia al Credito Y firmando Documentos"<<endl;
-cout<<"5. Partida De Venta de mercaderia al Credito, Firmando Documentos y Pago al Contado"<<endl;
-cout<<"6. Partida De Compra  de mercaderia al Contado"<<endl;
-cout<<"7. Partida De Compra  de mercaderia al Credito"<<endl;
-cout<<"8. Partida De Compra de meracaderia Firmando Documentos"<<endl;
-cout<<"9. Partida De Compra de meracaderia al Credito y Firmando Documentos"<<endl;
-cout<<"10. Partida De Compra de meracaderia al Contado, Credito y Firmando Documentos"<<endl;
-cout<<"11. Partida De Abono a Deuda adquirida con los proveedores"<<endl;
-cout<<"12. Partida De Compra de Equipo de Computo"<<endl;
-cout<<"13. Partida De Abono a Documentos por pagar y descuento por pronto pago"<<endl;
-cout<<"14. Partida De Abono a Documentos por pagar sin descuento"<<endl;
-cout<<"15. Partida de Sueldos"<<endl;
-cout<<"16. Partida de Devolucion de Mercaderia por Clientes"<<endl;
-cout<<"17. Partida de Devolucion de Mercaderia A   Proveedores"<<endl;
-cout<<"18. Partida de Pago a Hipotecas Bancarias"<<endl;
-cout<<"19. Partida de Abono de Clientes"<<endl;
-cout<<"20. Partida de Abono de Documentos por Cobrar"<<endl;
-cout<<"21. Partida de Depreciaciones y Amortizaciones"<<endl;
-cin>>partida;
-
-switch (partida){
-
-case 1 : {
-system("CLS");	
-double cb1,v1,cb2,v2,ivp1,ivp2;
-cout<<"	                        Venta de mercaderia al Contado"<<endl;
-cout<<"                       DEBE                               HABER    "<<endl;
-cout<<"\nCAJA Y BANCOS          ";cin>>cb1;
-v1=cb1/1.12;
-cout<<"  Ventas                                                    "<< fixed << setprecision(2)<<v1<<endl;
-ivp1=v1*0.12;
-cout<<"  Iva por pagar                                             "<< fixed << setprecision(2)<<ivp1<<endl;
-cb2=Cajabancos + cb1;
-Cajabancos = cb2; 
-v2=Ventas + v1; 
-Ventas = v2; 
-ivp2=Iva_por_pagar + ivp1;
-Iva_por_pagar =ivp2; 
-cout<<"                 ______________________________________________________"<<endl;
-cout<<"TOTALES                "<<cb1<<"                                  "<<v1+ivp1<<endl;
-cout<<"                 ______________________________________________________"<<endl;
-cout<<"                 ______________________________________________________";
-
-cout<<"\n\n\n\n\nPresione Enter para regresar al menu de Jornalizacion";
-getch();
-break;	
-}
-
-case 2 :{
-system("CLS");	
-double cl1,cl2,v3,v4,ivp3,ivp4;		
-cout<<"	                        Venta de mercaderia al Credito"<<endl;
-cout<<"                       DEBE                               HABER    "<<endl;	
-cout<<"\nClientes               ";cin>>cl1;
-v3=cl1/1.12;        	
-cout<<"  Ventas                                                    "<< fixed << setprecision(2)<<v3<<endl;	
-ivp3=v3*0.12;
-cout<<"  Iva por pagar                                             "<< fixed << setprecision(2)<<ivp3<<endl;
-cl2=clientes + cl1;
-clientes = cl2;
-v4 = Ventas + v3;
-Ventas = v4;
-ivp4=Iva_por_pagar + ivp3;
-Iva_por_pagar = ivp4;
-cout<<"                 ______________________________________________________"<<endl;
-cout<<"TOTALES                "<<cl1<<"                                  "<<v3+ivp3<<endl;
-cout<<"                 ______________________________________________________"<<endl;
-cout<<"                 ______________________________________________________";
-
-cout<<"\n\n\n\n\nPresione Enter para regresar al menu de Jornalizacion";
-getch();	
-	
-break;
-}
-
-case 3 :{
-system("CLS");
-double docc1,docc2,v5,v6,ivp5,ivp6;
-cout<<"	                 Venta de mercaderia al Credito con Firma de Documentos"<<endl;
-cout<<"                       DEBE                               HABER    "<<endl;		
-cout<<"\nDocumentos por cobrar  ";cin>>docc1;
-v5=docc1/1.12;
-cout<<"  Ventas                                                    "<< fixed << setprecision(2)<<v5<<endl;
-ivp5=v5*0.12;
-cout<<"  Iva por pagar                                             "<< fixed << setprecision(2)<<ivp5<<endl;
-docc2=Docc + docc1;
-Docc=docc2;
-v6=Ventas + v5;
-Ventas=v6;
-ivp6=Iva_por_pagar + ivp5;
-Iva_por_pagar=ivp6;
-cout<<"                 ______________________________________________________"<<endl;
-cout<<"TOTALES                "<<docc1<<"                                "<<v5+ivp5<<endl;
-cout<<"                 ______________________________________________________"<<endl;
-cout<<"                 ______________________________________________________";	
-
-cout<<"\n\n\n\n\nPresione Enter para regresar al menu de Jornalizacion";	
-getch();	
-break;
-}
-case 4:{
-system("CLS");
-double docc3,docc4,cl3,cl4,v7,v8,ivp7,ivp8;
-cout<<"                Venta de mercaderia al Credito Y Firmando Documentos"<<endl;	
-cout<<"                       DEBE                               HABER    "<<endl;	
-cout<<"\nDocumentos por cobrar  ";cin>>docc3;
-cout<<"\nClientes               ";cin>>cl3;
-v7 = (docc3 + cl3)/1.12;
-cout<<"  Ventas                                                    "<< fixed << setprecision(2)<<v7<<endl;	
-ivp7 =v7*0.12;
-cout<<"  Iva por pagar                                             "<< fixed << setprecision(2)<<ivp7<<endl;
-docc4 = Docc + docc3;
-Docc=docc4;
-cl4=clientes + cl3;
-clientes = cl4;
-v8 = Ventas + v7;
-Ventas = v8;
-ivp8 = Iva_por_pagar+ ivp7;
-Iva_por_pagar = ivp8;
-cout<<"                 ______________________________________________________"<<endl;
-cout<<"TOTALES                "<<docc3+cl3<<"                     "<<v7+ivp7<<endl;
-cout<<"                 ______________________________________________________"<<endl;
-cout<<"                 ______________________________________________________";	
-
-cout<<"\n\n\n\n\nPresione Enter para regresar al menu de Jornalizacion";
-getch();
-break;
-}
-	
-case 5:{
-system("CLS");	
-double cb3,cb4,docc5,docc6,cl5,cl6,v9,v10,ivp9,ivp10;
-cout<<"Venta de mercaderia al Contado,Credito y Firmando Documentos"<<endl;
-cout<<"                       DEBE                               HABER    "<<endl;	
-cout<<"\nCaja y Bancos          ";cin>>cb3;
-cout<<"\nDocumentos por Cobrar  ";cin>>docc5;
-cout<<"\nClientes               ";cin>>cl5;
-v9 = (cb3 + docc5 + cl5)/1.12;
-cout<<"  Ventas                                                    "<< fixed << setprecision(2)<<v9<<endl;
-ivp9=v9 * 0.12;
-cout<<"  Iva por pagar                                             "<< fixed << setprecision(2)<<ivp9<<endl;
-docc6 = Docc + docc5;
-Docc = docc6;
-cl6 = clientes + cl5;
-clientes = cl6;
-cb4 = Cajabancos + cb3;
-Cajabancos = cb4;
-v10 = Ventas + v9;
-Ventas = v10;
-ivp10= Iva_por_pagar + ivp9;
-Iva_por_pagar = ivp10;	
-cout<<"                 ______________________________________________________"<<endl;
-cout<<"TOTALES                "<<cb3+docc5+cl5<<"                     "<<v9+ivp9<<endl;
-cout<<"                 ______________________________________________________"<<endl;
-cout<<"                 ______________________________________________________";		
-
-cout<<"\n\n\n\n\nPresione Enter para regresar al menu de Jornalizacion";
-getch();	
-break;
-}	
-
-case 6: {
-system("CLS");
-
-double com1,com2,ivacc1,ivacc2,cb5,cb6;
-
-cout<<"         Compra de Mercaderia al  Contado    "<<endl;	
-cout<<"                           DEBE                   HABER    "<<endl;		
-cout<<"Caja y Bancos                                      ";cin>>cb5;
-com1 = cb5 / 1.12;
-ivacc1 =com1 * 0.12;
-cout<<"\nCompras                "<< fixed << setprecision(2)<<com1<<endl;
-cout<<"\nIva por cobrar         "<< fixed << setprecision(2)<<ivacc1<<endl;	
-cb6 = Cajabancos - cb5;
-Cajabancos = cb6;
-com2= comp+ com1;
-comp = com2;
-ivacc2 = Ivacc + ivacc1;
-Ivacc = ivacc2;
-cout<<"                 ______________________________________________________"<<endl;
-cout<<"TOTALES                "<<com1+ivacc1<<"                     "<<cb5<<endl;
-cout<<"                 ______________________________________________________"<<endl;
-cout<<"                 ______________________________________________________";	
-
-cout<<"\n\n\n\n\nPresione Enter para regresar al menu de Jornalizacion";
-getch();
-	break;	
-}
-
-case 7 : {
-system("CLS");	
-double com3,com4,ivacc3,ivacc4,pro1,pro2;	
-cout<<"         Compra de Mercaderia al  Credito    "<<endl;	
-cout<<"                           DEBE                   HABER    "<<endl;		
-cout<<"Proveedores                                       ";cin>>pro1;
-com3 = pro1 / 1.12;
-ivacc3 = com3 * 0.12;
-cout<<"\nCompras                "<< fixed << setprecision(2)<<com3<<endl;
-cout<<"\nIva por cobrar         "<< fixed << setprecision(2)<<ivacc3<<endl;	
-com4 = com3 + comp;
-comp = com4;
-ivacc4 = ivacc3 + Ivacc;
-Ivacc = ivacc4;
-pro2=pro1 + PRO;
-PRO = pro2;
-cout<<"                 ______________________________________________________"<<endl;
-cout<<"TOTALES                "<<com3+ivacc3<<"                     "<<pro1<<endl;
-cout<<"                 ______________________________________________________"<<endl;
-cout<<"                 ______________________________________________________";	
-
-cout<<"\n\n\n\n\nPresione Enter para regresar al menu de Jornalizacion";
-getch();
-                       	
-	break;
-}
-
-case 8 : {
-system("CLS");
-double dp1,dp2,com5,com6,ivacc5,ivacc6;
-cout<<"         Compra de Mercaderia al  Credito Firmando Documentos   "<<endl;	
-cout<<"                           DEBE                   HABER    "<<endl;	
-cout<<"Documentos por Pagar                                ";cin>>dp1;	
-com5 = dp1 / 1.12;
-ivacc5 = com5 * 0.12;
-cout<<"\nCompras                "<< fixed << setprecision(2)<<com5<<endl;
-cout<<"\nIva por cobrar         "<< fixed << setprecision(2)<<ivacc5<<endl;	
-dp2 = dp1 + DP;
-DP =dp2;
-com6 = com5 + comp;
-comp = com6;
-ivacc6 = ivacc5 + Ivacc;
-Ivacc = ivacc6;
-cout<<"                 ______________________________________________________"<<endl;
-cout<<"TOTALES                "<<com5+ivacc5<<"                     "<<dp1<<endl;
-cout<<"                 ______________________________________________________"<<endl;
-cout<<"                 ______________________________________________________";	
-cout<<"\n\n\n\n\nPresione Enter para regresar al menu de Jornalizacion";
-getch();
-
-break;
-}
-
-case 9 : {
-system("CLS");	
-
-double dp3,dp4,pro3,pro4,com7,com8,ivacc7,ivacc8;
-
-cout<<"         Compra de Mercaderia al  Credito Y Firmando Documentos    "<<endl;	
-cout<<"                           DEBE                   HABER    "<<endl;	
-cout<<" Documetos por pagar                                 ";cin>>dp3;
-cout<<" Proveedores                                         ";cin>>pro3;
-com7= (dp3 + pro3)/1.12;
-ivacc7= com7 *0.12;
-cout<<"\nCompras                "<< fixed << setprecision(2)<<com7<<endl;
-cout<<"\nIva por cobrar         "<< fixed << setprecision(2)<<ivacc7<<endl;
-dp4 = dp3 + DP;
-DP =dp4;
-pro4= pro3 + PRO;
-PRO = pro4;
-com8= com7 + comp;
-comp = com8;
-ivacc8 =ivacc7 + Ivacc;
-Ivacc = ivacc8;
-cout<<"                 ______________________________________________________"<<endl;
-cout<<"TOTALES                "<<com7+ivacc7<<"                     "<<dp3+pro3<<endl;
-cout<<"                 ______________________________________________________"<<endl;
-cout<<"                 ______________________________________________________";	
-cout<<"\n\n\n\n\nPresione Enter para regresar al menu de Jornalizacion";
-getch();
-
-	
-	break;
-}
-	
-case 10 :  {
-system("CLS");	
-double 	cb7,cb8,pro5,pro6,dp5,dp6,com9,com10,ivacc9,ivacc10;
-
-cout<<"         Compra de Mercaderia al Contado, Credito Y Firmando Documentos    "<<endl;	
-cout<<"                           DEBE                   HABER    "<<endl;	
-cout<<" Caja Y Bancos                                       ";cin>>cb7;
-cout<<" Proveedores                                         ";cin>>pro5;	
-cout<<" Documetos por pagar                                 ";cin>>dp5;
-com9 = (cb7 + pro5 + dp5)/1.12;
-ivacc9 = com9 * 0.12;
-cout<<"\nCompras                "<< fixed << setprecision(2)<<com9<<endl;
-cout<<"\nIva por cobrar         "<< fixed << setprecision(2)<<ivacc9<<endl;
-cb8 = Cajabancos - cb7;
-Cajabancos = cb8;
-pro6 = pro5 + PRO;
-PRO = pro6;
-dp6 = dp5 + DP;
-DP = dp6;
-com10 = com9 + comp;
-comp = com10;
-ivacc10 = ivacc9 + Ivacc;
-Ivacc = ivacc10;
-cout<<"                 ______________________________________________________"<<endl;
-cout<<"TOTALES                "<<com9+ivacc9<<"                     "<<cb7+pro5+dp5<<endl;
-cout<<"                 ______________________________________________________"<<endl;
-cout<<"                 ______________________________________________________";	
-cout<<"\n\n\n\n\nPresione Enter para regresar al menu de Jornalizacion";
-getch();
-break;
-}
-
-case 11 :{
-system("CLS");	
-double pro7,pro8,cb9,cb10;
-cout<<"         Abono a Deuda con proveedores   "<<endl;	
-cout<<"                           DEBE                   HABER    "<<endl;
-cout<<" Proveedores              ";cin>>pro7;
-cb9 = pro7;
-cout<<" Caja Y Bancos                                       "<<cb9<<endl;
-pro8 = PRO - pro7;
-PRO = pro8;
-cb10= Cajabancos - cb9;
-Cajabancos = cb10;
-cout<<"                 ______________________________________________________"<<endl;
-cout<<"TOTALES                    "<<pro7<<"                     "<<cb9<<endl;
-cout<<"                 ______________________________________________________"<<endl;
-cout<<"                 ______________________________________________________";	
-cout<<"\n\n\n\n\nPresione Enter para regresar al menu de Jornalizacion";
-getch();
-break;
-}
-case 12 :{
-system("CLS");
-double ec1,ec2,ivacc11,ivacc12,cb11,cb12;
-cout<<"         Compra de Equipo de computo   "<<endl;	
-cout<<"                           DEBE                   HABER    "<<endl;
-cout<<" Caja Y Bancos                                    ";cin>>cb11;
-ec1 = cb11 / 1.12;
-cout<<"\nEquipo de Computacion    "<< fixed << setprecision(2)<<ec1<<endl;	
-ivacc11= ec1*0.12;
-cout<<"\nIva por cobrar           "<< fixed << setprecision(2)<<ivacc11<<endl;
-cb12 = Cajabancos - cb11;
-Cajabancos = cb12;
-ec2 = EC + ec1;
-EC = ec2;
-ivacc12 = Ivacc + ivacc11;
-Ivacc = ivacc12;
-cout<<"                 ______________________________________________________"<<endl;
-cout<<"TOTALES                    "<<ec1+ivacc11<<"                 "<<cb11<<endl;
-cout<<"                 ______________________________________________________"<<endl;
-cout<<"                 ______________________________________________________";	
-cout<<"\n\n\n\n\nPresione Enter para regresar al menu de Jornalizacion";
-getch();
-	
-
-	break;
-}
-
-case 13 :{
-system("CLS");
-double dp7,dp8,desc1,desc2,cb13,cb14;
-
-cout<<"         Abono a deuda sobre Documentos con descuentos   "<<endl;
-cout<<"                           DEBE                   HABER    "<<endl;
-cout<<"Documentos por pagar      ";cin>>dp7;
-cout<<"\nDescuentos Percibidos                             ";cin>>desc1;
-cb13 = dp7-desc1;
-cout<<" Caja Y Bancos                                    "<<cb13<<endl;
-dp8 = DP - dp7;
-DP = dp8;
-desc2 = DESC + desc1;
-DESC = desc2;
-cb14 = Cajabancos - cb13;
-Cajabancos = cb14;
-cout<<"                 ______________________________________________________"<<endl;
-cout<<"TOTALES                    "<<dp7<<"                 "<<desc1+cb13<<endl;
-cout<<"                 ______________________________________________________"<<endl;
-cout<<"                 ______________________________________________________";	
-cout<<"\n\n\n\n\nPresione Enter para regresar al menu de Jornalizacion";
-getch();
-			
-	break;
-}
-case 14 : {
-system("CLS");
-double dp9,dp10,cb15,cb16;	
-cout<<"         Abono a deuda sobre Documentos   "<<endl;
-cout<<"                           DEBE                   HABER    "<<endl;	
-cout<<"Documentos por pagar      ";cin>>dp9;
-cb15 = dp9;	
-cout<<" Caja Y Bancos                                    "<<cb15<<endl;
-dp10 = DP - dp9;
-DP =dp10;
-cb16 = Cajabancos - cb15;
-Cajabancos = cb16;
-cout<<"                 ______________________________________________________"<<endl;
-cout<<"TOTALES                    "<<dp9<<"                 "<<cb15<<endl;
-cout<<"                 ______________________________________________________"<<endl;
-cout<<"                 ______________________________________________________";	
-cout<<"\n\n\n\n\nPresione Enter para regresar al menu de Jornalizacion";
-getch();
-break;
-}
-
-case 15 :{
-system("CLS");
-double sa1,sa2,sv1,sv2,cb17,cb18;
-cout<<"         	Pago de Sueldos de la Empresa   "<<endl;
-cout<<"                           DEBE                   HABER    "<<endl;
-cout<<"Sueldos Administracion    ";cin>>sa1;
-cout<<"Sueldos Sala de Ventas    ";cin>>sv1;
-cb17 = sa1 +sv1;
-cout<<" Caja Y Bancos                                    "<<cb17<<endl;
-sa2 = SA + sa1;
-SA = sa2;
-sv2 = SV + sv1;
-SV = sv2;
-cb18 =Cajabancos - cb17;
-Cajabancos = cb18;
-cout<<"                 ______________________________________________________"<<endl;
-cout<<"TOTALES                    "<<sa1+sv1<<"                   "<<cb17<<endl;
-cout<<"                 ______________________________________________________"<<endl;
-cout<<"                 ______________________________________________________";	
-cout<<"\n\n\n\n\nPresione Enter para regresar al menu de Jornalizacion";
-getch();
-		break;
-}
-case 16 : {
-system("CLS");
-double devsv1,devsv2,cb19,cb20,ivp11,ivp12;
-cout<<"         	Devolucion de Mercadería por Clientes  "<<endl;
-cout<<"                           DEBE                   HABER    "<<endl;
-cout<<" Caja Y Bancos                                    ";cin>>cb19;
-devsv1 = cb19/1.12;
-cout<<"\nDevoluciones S/ Ventas     "<< fixed << setprecision(2)<<devsv1<<endl;
-ivp11 = devsv1 * 0.12;
-cout<<"Iva por Pagar              "<< fixed << setprecision(2)<<ivp11<<endl;
-cb20 = Cajabancos - cb19;
-Cajabancos = cb20;
-devsv2 = DEVVENTAS + devsv1;
-DEVVENTAS = devsv2;
-ivp12 = Iva_por_pagar - ivp11;
-Iva_por_pagar = ivp12;
-cout<<"                 ______________________________________________________"<<endl;
-cout<<"TOTALES                    "<<devsv1+ivp11<<"                 "<<cb19<<endl;
-cout<<"                 ______________________________________________________"<<endl;
-cout<<"                 ______________________________________________________";	
-cout<<"\n\n\n\n\nPresione Enter para regresar al menu de Jornalizacion";
-getch();	
-	break;
-}
-
-case 17: {	
-system("CLS");
-double pro9,pro10,devc1,devc2,ivacc13,ivacc14;
-
-cout<<"         	Devolucion de Mercadería A Proveedores "<<endl;
-cout<<"                           DEBE                   HABER    "<<endl;
-cout<<"Proveedores               ";cin>>pro9;
-devc1 = pro9 /1.12;
-cout<<"\nDevoluciones S/ Compras                         "<< fixed << setprecision(2)<<devc1<<endl;
-ivacc13 = devc1 * 0.12;
-cout<<"\nIva por cobrar                                  "<< fixed << setprecision(2)<<ivacc13<<endl;
-pro10 = PRO - pro9;
-PRO = pro10;
-devc2= DEVCOM + devc1;
-DEVCOM = devc2;
-ivacc14 = Ivacc - ivacc13;
-Ivacc = ivacc14;
-cout<<"                 ______________________________________________________"<<endl;
-cout<<"TOTALES                    "<<pro9<<"                 "<<devc1+ivacc13<<endl;
-cout<<"                 ______________________________________________________"<<endl;
-cout<<"                 ______________________________________________________";	
-cout<<"\n\n\n\n\nPresione Enter para regresar al menu de Jornalizacion";
-getch();
-	break;
-	}
-	
-case 18 : {
+void Apertura() {
+	system("color 82");
+	double debe, haber;
 	system("CLS");
-double hp1,hp2,intg1,intg2,cb21,cb22;	
-	
-cout<<"         	Abono a Hipoteca Bancaria "<<endl;
-cout<<"                           DEBE                   HABER    "<<endl;
-cout<<"Hipotecas                 ";cin>>hp1;
-cout<<"Intereses Gasto           ";cin>>intg1;
-cb21 = hp1 + intg1;
-cout<<"\nCaja Y Bancos                                    "<<cb21<<endl;
-hp2 = HP - hp1;
-HP = hp2;
-intg2 = INTG + intg1;
-INTG = intg2;
-cb22= Cajabancos - cb21;
-Cajabancos = cb22;
-cout<<"                 ______________________________________________________"<<endl;
-cout<<"TOTALES                    "<<hp1+intg1<<"                "<<cb21<<endl;
-cout<<"                 ______________________________________________________"<<endl;
-cout<<"                 ______________________________________________________";	
-cout<<"\n\n\n\n\nPresione Enter para regresar al menu de Jornalizacion";
-getch();
+	system("color 73");
+	cout << "             Saldos Iniciales o  Partida de Apertura" << endl;
+	cout << "                           DEBE                  HABER  " << endl;
+	cout << "1.Caja y Bancos :          "; cin >> Cajabancos;
+	cout << "2.Clientes :               "; cin >> clientes;
+	cout << "3.Iva por cobrar:          "; cin >> Ivacc;
+	cout << "4.Documento por cobrar     "; cin >> Docc;
+	cout << "5.Mercaderia I             "; cin >> MI;
+	cout << "6.Mobiliario Y Equipo      "; cin >> ME;
+	cout << "7.Vehiculos                "; cin >> VH;
+	cout << "8.Equipo de Computacion    "; cin >> EC;
+	cout << "9.Inmuebles                "; cin >> IM;
+	cout << "10.Gastos de Instalacion   "; cin >> GI;
+	cout << "11.Papeleria y utilies     "; cin >> PU;
+	cout << "12.Proveedores                                    "; cin >> PRO;
+	cout << "13.Documentos por pagar                           "; cin >> DP;
+	cout << "14.Hipotecas                                      "; cin >> HP;
+	debe = Cajabancos + clientes + Ivacc + Docc + MI + ME + VH + EC + IM + GI + PU;
+	haber = PRO + DP + HP;
+	capital = debe - haber;
+	cout << "18.Capital        :                               " << capital << endl;
+	cout << "                      __________________________________________" << endl;
+	cout << "Totales                    " << debe << "                   " << haber + capital << endl;
+	cout << "                      __________________________________________" << endl;
+	cout << "                      __________________________________________" << endl;
+	if (capital < 0) {
 
-	
-	break;
-}
-case 19 :{
- system("CLS");
- double cb23,cb24,clie1,clie2;
-cout<<"         	Abono de Clientes "<<endl;
-cout<<"                           DEBE                   HABER    "<<endl;
-cout<<"Caja y Bancos             ";cin>>cb23; 
-clie1 = cb23;
-cout<<"\nClientes                                        "<<clie1<<endl;
-cb24 = Cajabancos + cb23;
-Cajabancos = cb24;
-clie2= clientes - clie1;
-clientes = clie2;
-cout<<"                 ______________________________________________________"<<endl;
-cout<<"TOTALES                    "<<cb23<<"                "<<clie1<<endl;
-cout<<"                 ______________________________________________________"<<endl;
-cout<<"                 ______________________________________________________";	
-cout<<"\n\n\n\n\nPresione Enter para regresar al menu de Jornalizacion";
-getch();
-	 	
-	break;
-} 
-case 20: {
-	 system("CLS");
-double cb25,cb26,docc1,docc2;	 
-cout<<"                          Abono a Documentos por cobrar "<<endl;
-cout<<"                           DEBE                   HABER    "<<endl;
-cout<<"Caja y Bancos             ";cin>>cb25;
-docc1 = cb25;
-cout<<"\nDocumentos por cobrar                             "<<docc1<<endl;
-cb26=Cajabancos  + cb25;
-Cajabancos = cb26;
-docc2 = Docc - docc1;
-Docc = docc2;
-cout<<"                 ______________________________________________________"<<endl;
-cout<<"TOTALES                    "<<cb25<<"                "<<docc1<<endl;
-cout<<"                 ______________________________________________________"<<endl;
-cout<<"                 ______________________________________________________";	
-cout<<"\n\n\n\n\nPresione Enter para regresar al menu de Jornalizacion";
-getch();	
-	break;
-}
-
-case 21:{
-system("CLS");
-double depmb1,depec1,depvh1,agi1,dacummb1,dacumec1,dacvh1,acumgo1;
-cout<<"                     Partida De Depreciaciones y Amortizaciones "<<endl;
-cout<<"                                        DEBE                   HABER    "<<endl;
-depmb1 = ME * 0.20;
-cout<<"Depreciacion Mobiliario y Equipo        "<<depmb1<<endl;
-depec1 = EC * 0.33;
-cout<<"Depreciacione Equipo de Computo         "<<depec1<<endl;
-depvh1=VH * 0.20;
-cout<<"Depreciacione Vehiculos                 "<<depvh1<<endl;
-agi1 = GI * 0.10;
-cout<<"Amortizacion Gastos de Organizacion     "<<agi1<<endl;
-dacummb1 = depmb1;
-cout<<"\n\nDepreciacion Acumulada Mobiliario y Equipo                       "<<dacummb1<<endl;
-dacumec1 = depec1;
-cout<<"Depreciacion Acumulada Equipo de Computo                         "<<dacumec1<<endl;
-dacvh1 = depvh1;
-cout<<"Depreciacion Acumulada Vehiculos                                 "<<dacvh1<<endl;
-acumgo1 = agi1;
-cout<<"Amortizacion Acumulada Gastos de Organizacion                    "<<acumgo1<<endl;
-DEPMB = depmb1;
-DEPEC = depec1;
-DEPVH = depvh1;
-AMORGO = agi1;
-DEPACUMMB = dacummb1;
-DEPACUMEC = dacumec1;
-DEPACUMVH = dacvh1;
-AMORACUMGO = acumgo1;
-cout<<"                 ______________________________________________________"<<endl;
-cout<<"TOTALES                                 "<<depmb1+depec1+depvh1+agi1<<"                        "<<dacummb1+dacumec1+depvh1+acumgo1<<endl;
-cout<<"                 ______________________________________________________"<<endl;
-cout<<"                 ______________________________________________________";	
-cout<<"\n\n\n\n\nPresione Enter para regresar al menu de Jornalizacion";
-getch();
-	break;
-}
-
-case 22 : {
-		
-repite = false;		
-	break;
-}	
-}
-}while(repite);
-
-return menu();
-}
-
- void Balnce(){
- double debe = 0, haber = 0;	
- system("CLS");	
- cout<<"                        Balance de Saldos             "<<endl;
- cout<<"                            DEBE                     HABER   "<<endl;
- cout<<"Caja y Bancos               "  <<Cajabancos<<endl;
- cout<<"Clientes                    "  <<clientes<<endl;
- cout<<"Documentos por Cobrar       "  <<Docc<<endl;
- cout<<"Equipo de Computacion       "  <<EC<<endl;
- cout<<"Gastos de Instalacion       "  <<GI<<endl;
- cout<<"Inmbuebles                  " <<IM<<endl;
- cout<<"Iva por Cobrar              " <<Ivacc<<endl;
- cout<<"Mobiliario y Equipo         " <<ME<<endl;
- cout<<"Mercaderia I                " <<MI<<endl;
- cout<<"Papelería y Utiles          " <<PU<<endl;
- cout<<"Vehiculos                   " <<VH<<endl;
- cout<<"Compras                     " <<comp<<endl;
- cout<<"Sueldos Sala de Ventas      " <<SV<<endl;
- cout<<"Sueldos Administracion      " <<SA<<endl;
- cout<<"Devoluciones S/Ventas       " <<DEVVENTAS<<endl;
- cout<<"Intereses Gasto             " <<INTG<<endl;
- cout<<"Depreciacion Mob y Equipo   " <<DEPMB<<endl;
- cout<<"Depreciacion E de Computo   " <<DEPEC<<endl;
- cout<<"Depreciacion Vehiculos      " <<DEPVH<<endl;
- cout<<"Amortizacion Gastos de Org. " <<AMORGO<<endl;
- cout<<"Ventas                                           "<<Ventas;
- cout<<"\nIva por pagar                                    "<<Iva_por_pagar;	
- cout<<"\nProveedores                                      "<<PRO;
- cout<<"\nHipotecas                                        "<<HP;
- cout<<"\nDocumentos por pagar                             "<<DP;
- cout<<"\nDescuentos Percibidos                            "<<DESC;
- cout<<"\nDevoluciones S/Compras                           "<<DEVCOM;
- cout<<"\nDepreciacion Acumulada Mobiliario y Equipo       "<<DEPACUMMB;
- cout<<"\nDepreciacion Acumulada Equipo de Computo         "<<DEPACUMEC;
- cout<<"\nDepreciacion Acumulada Vehiculos                 "<<DEPVH;
- cout<<"\nAmortizacion Acumulada Gastos de Organizacion    "<<AMORACUMGO;
- cout<<"\nCapital                                          "<<capital;
- debe=Cajabancos+clientes+Docc+EC+GI+IM+Ivacc+ME+MI+PU+VH+comp+SV+SA+DEVVENTAS+INTG+DEPMB+DEPEC+DEPVH+AMORGO;
- haber= Ventas + Iva_por_pagar+PRO+HP+DP+capital+DESC+DEVCOM+DEPACUMMB+DEPACUMEC+DEPVH+AMORACUMGO;
- cout<<"\n                      __________________________________________"<<endl;
- cout<<"Totales                    "<<debe<<"                     "<<haber<<endl;  
- cout<<"                      __________________________________________"<<endl;
- cout<<"                      __________________________________________"<<endl;
- getch();
- return menu();
- }
-
-
-void Resultados (){
-	
-}
-
-
-
-void General (){
-	
+		cout << "\n\n\n\nHa ingresado mal los valores ya que su capital es Negativo, por favor verifique las cantidades";
+	}
+	system("pause");
+	return menu();
 }
 
 
 
 
-void Razones (){
-	
+void Jornalizacion() {
+	int partida;
+	bool repite = true;
+
+	do {
+		system("CLS");
+		cout << "                  Elija el prototipo de Partida que desea Realizar" << endl;
+		cout << "1. Partida De Venta  de mercaderia al Contado" << endl;
+		cout << "2. Partida De Venta de mercaderia al Credito" << endl;
+		cout << "3. Partida De Venta de mercaderia firmando Documentos por Cobrar" << endl;
+		cout << "4. Partida De Venta de mercaderia al Credito Y firmando Documentos" << endl;
+		cout << "5. Partida De Venta de mercaderia al Credito, Firmando Documentos y Pago al Contado" << endl;
+		cout << "6. Partida De Compra  de mercaderia al Contado" << endl;
+		cout << "7. Partida De Compra  de mercaderia al Credito" << endl;
+		cout << "8. Partida De Compra de meracaderia Firmando Documentos" << endl;
+		cout << "9. Partida De Compra de meracaderia al Credito y Firmando Documentos" << endl;
+		cout << "10. Partida De Compra de meracaderia al Contado, Credito y Firmando Documentos" << endl;
+		cout << "11. Partida De Abono a Deuda adquirida con los proveedores" << endl;
+		cout << "12. Partida De Compra de Equipo de Computo" << endl;
+		cout << "13. Partida De Abono a Documentos por pagar y descuento por pronto pago" << endl;
+		cout << "14. Partida De Abono a Documentos por pagar sin descuento" << endl;
+		cout << "15. Partida de Sueldos" << endl;
+		cout << "16. Partida de Devolucion de Mercaderia por Clientes" << endl;
+		cout << "17. Partida de Devolucion de Mercaderia A   Proveedores" << endl;
+		cout << "18. Partida de Pago a Hipotecas Bancarias" << endl;
+		cout << "19. Partida de Abono de Clientes" << endl;
+		cout << "20. Partida de Abono de Documentos por Cobrar" << endl;
+		cout << "21. Partida de Depreciaciones y Amortizaciones" << endl;
+		cout << "22. Partida de Cierre Perdidas del Ejercicio" << endl;
+		cout << "23. Partida de Cierre Ganancias del Ejercicio" << endl;
+		cout << "24. Partida de Cierre Perdida O Ganancias    " << endl;
+		cout << "25. Partida de Cierre Activos y Pasivos      " << endl;
+		cout << "26. Salir                                    " << endl;
+		cin >> partida;
+
+		switch (partida) {
+
+		case 1: {
+			system("CLS");
+			double cb1, v1, cb2, v2, ivp1, ivp2;
+			cout << "	                        Venta de mercaderia al Contado" << endl;
+			cout << "                       DEBE                               HABER    " << endl;
+			cout << "\nCAJA Y BANCOS          "; cin >> cb1;
+			v1 = cb1 / 1.12;
+			cout << "  Ventas                                                    " << fixed << setprecision(2) << v1 << endl;
+			ivp1 = v1 * 0.12;
+			cout << "  Iva por pagar                                             " << fixed << setprecision(2) << ivp1 << endl;
+			cb2 = Cajabancos + cb1;
+			Cajabancos = cb2;
+			v2 = Ventas + v1;
+			Ventas = v2;
+			ivp2 = Iva_por_pagar + ivp1;
+			Iva_por_pagar = ivp2;
+			cout << "                 ______________________________________________________" << endl;
+			cout << "TOTALES                " << cb1 << "                                  " << v1 + ivp1 << endl;
+			cout << "                 ______________________________________________________" << endl;
+			cout << "                 ______________________________________________________";
+
+			cout << "\n\n\n\n\nPresione Enter para regresar al menu de Jornalizacion";
+			system("pause");
+			break;
+		}
+
+		case 2: {
+			system("CLS");
+			double cl1, cl2, v3, v4, ivp3, ivp4;
+			cout << "	                        Venta de mercaderia al Credito" << endl;
+			cout << "                       DEBE                               HABER    " << endl;
+			cout << "\nClientes               "; cin >> cl1;
+			v3 = cl1 / 1.12;
+			cout << "  Ventas                                                    " << fixed << setprecision(2) << v3 << endl;
+			ivp3 = v3 * 0.12;
+			cout << "  Iva por pagar                                             " << fixed << setprecision(2) << ivp3 << endl;
+			cl2 = clientes + cl1;
+			clientes = cl2;
+			v4 = Ventas + v3;
+			Ventas = v4;
+			ivp4 = Iva_por_pagar + ivp3;
+			Iva_por_pagar = ivp4;
+			cout << "                 ______________________________________________________" << endl;
+			cout << "TOTALES                " << cl1 << "                                  " << v3 + ivp3 << endl;
+			cout << "                 ______________________________________________________" << endl;
+			cout << "                 ______________________________________________________";
+
+			cout << "\n\n\n\n\nPresione Enter para regresar al menu de Jornalizacion";
+			system("pause");
+
+			break;
+		}
+
+		case 3: {
+			system("CLS");
+			double docc1, docc2, v5, v6, ivp5, ivp6;
+			cout << "	                 Venta de mercaderia al Credito con Firma de Documentos" << endl;
+			cout << "                       DEBE                               HABER    " << endl;
+			cout << "\nDocumentos por cobrar  "; cin >> docc1;
+			v5 = docc1 / 1.12;
+			cout << "  Ventas                                                    " << fixed << setprecision(2) << v5 << endl;
+			ivp5 = v5 * 0.12;
+			cout << "  Iva por pagar                                             " << fixed << setprecision(2) << ivp5 << endl;
+			docc2 = Docc + docc1;
+			Docc = docc2;
+			v6 = Ventas + v5;
+			Ventas = v6;
+			ivp6 = Iva_por_pagar + ivp5;
+			Iva_por_pagar = ivp6;
+			cout << "                 ______________________________________________________" << endl;
+			cout << "TOTALES                " << docc1 << "                                " << v5 + ivp5 << endl;
+			cout << "                 ______________________________________________________" << endl;
+			cout << "                 ______________________________________________________";
+
+			cout << "\n\n\n\n\nPresione Enter para regresar al menu de Jornalizacion";
+			system("pause");
+			break;
+		}
+		case 4: {
+			system("CLS");
+			double docc3, docc4, cl3, cl4, v7, v8, ivp7, ivp8;
+			cout << "                Venta de mercaderia al Credito Y Firmando Documentos" << endl;
+			cout << "                       DEBE                               HABER    " << endl;
+			cout << "\nDocumentos por cobrar  "; cin >> docc3;
+			cout << "\nClientes               "; cin >> cl3;
+			v7 = (docc3 + cl3) / 1.12;
+			cout << "  Ventas                                                    " << fixed << setprecision(2) << v7 << endl;
+			ivp7 = v7 * 0.12;
+			cout << "  Iva por pagar                                             " << fixed << setprecision(2) << ivp7 << endl;
+			docc4 = Docc + docc3;
+			Docc = docc4;
+			cl4 = clientes + cl3;
+			clientes = cl4;
+			v8 = Ventas + v7;
+			Ventas = v8;
+			ivp8 = Iva_por_pagar + ivp7;
+			Iva_por_pagar = ivp8;
+			cout << "                 ______________________________________________________" << endl;
+			cout << "TOTALES                " << docc3 + cl3 << "                     " << v7 + ivp7 << endl;
+			cout << "                 ______________________________________________________" << endl;
+			cout << "                 ______________________________________________________";
+
+			cout << "\n\n\n\n\nPresione Enter para regresar al menu de Jornalizacion";
+			system("pause");
+			break;
+		}
+
+		case 5: {
+			system("CLS");
+			double cb3, cb4, docc5, docc6, cl5, cl6, v9, v10, ivp9, ivp10;
+			cout << "Venta de mercaderia al Contado,Credito y Firmando Documentos" << endl;
+			cout << "                       DEBE                               HABER    " << endl;
+			cout << "\nCaja y Bancos          "; cin >> cb3;
+			cout << "\nDocumentos por Cobrar  "; cin >> docc5;
+			cout << "\nClientes               "; cin >> cl5;
+			v9 = (cb3 + docc5 + cl5) / 1.12;
+			cout << "  Ventas                                                    " << fixed << setprecision(2) << v9 << endl;
+			ivp9 = v9 * 0.12;
+			cout << "  Iva por pagar                                             " << fixed << setprecision(2) << ivp9 << endl;
+			docc6 = Docc + docc5;
+			Docc = docc6;
+			cl6 = clientes + cl5;
+			clientes = cl6;
+			cb4 = Cajabancos + cb3;
+			Cajabancos = cb4;
+			v10 = Ventas + v9;
+			Ventas = v10;
+			ivp10 = Iva_por_pagar + ivp9;
+			Iva_por_pagar = ivp10;
+			cout << "                 ______________________________________________________" << endl;
+			cout << "TOTALES                " << cb3 + docc5 + cl5 << "                     " << v9 + ivp9 << endl;
+			cout << "                 ______________________________________________________" << endl;
+			cout << "                 ______________________________________________________";
+
+			cout << "\n\n\n\n\nPresione Enter para regresar al menu de Jornalizacion";
+			system("pause");
+			break;
+		}
+
+		case 6: {
+			system("CLS");
+
+			double com1, com2, ivacc1, ivacc2, cb5, cb6;
+
+			cout << "         Compra de Mercaderia al  Contado    " << endl;
+			cout << "                           DEBE                   HABER    " << endl;
+			cout << "Caja y Bancos                                      "; cin >> cb5;
+			com1 = cb5 / 1.12;
+			ivacc1 = com1 * 0.12;
+			cout << "\nCompras                " << fixed << setprecision(2) << com1 << endl;
+			cout << "\nIva por cobrar         " << fixed << setprecision(2) << ivacc1 << endl;
+			cb6 = Cajabancos - cb5;
+			Cajabancos = cb6;
+			com2 = comp + com1;
+			comp = com2;
+			ivacc2 = Ivacc + ivacc1;
+			Ivacc = ivacc2;
+			cout << "                 ______________________________________________________" << endl;
+			cout << "TOTALES                " << com1 + ivacc1 << "                     " << cb5 << endl;
+			cout << "                 ______________________________________________________" << endl;
+			cout << "                 ______________________________________________________";
+
+			cout << "\n\n\n\n\nPresione Enter para regresar al menu de Jornalizacion";
+			system("pause");
+			break;
+		}
+
+		case 7: {
+			system("CLS");
+			double com3, com4, ivacc3, ivacc4, pro1, pro2;
+			cout << "         Compra de Mercaderia al  Credito    " << endl;
+			cout << "                           DEBE                   HABER    " << endl;
+			cout << "Proveedores                                       "; cin >> pro1;
+			com3 = pro1 / 1.12;
+			ivacc3 = com3 * 0.12;
+			cout << "\nCompras                " << fixed << setprecision(2) << com3 << endl;
+			cout << "\nIva por cobrar         " << fixed << setprecision(2) << ivacc3 << endl;
+			com4 = com3 + comp;
+			comp = com4;
+			ivacc4 = ivacc3 + Ivacc;
+			Ivacc = ivacc4;
+			pro2 = pro1 + PRO;
+			PRO = pro2;
+			cout << "                 ______________________________________________________" << endl;
+			cout << "TOTALES                " << com3 + ivacc3 << "                     " << pro1 << endl;
+			cout << "                 ______________________________________________________" << endl;
+			cout << "                 ______________________________________________________";
+
+			cout << "\n\n\n\n\nPresione Enter para regresar al menu de Jornalizacion";
+			system("pause");
+
+			break;
+		}
+
+		case 8: {
+			system("CLS");
+			double dp1, dp2, com5, com6, ivacc5, ivacc6;
+			cout << "         Compra de Mercaderia al  Credito Firmando Documentos   " << endl;
+			cout << "                           DEBE                   HABER    " << endl;
+			cout << "Documentos por Pagar                                "; cin >> dp1;
+			com5 = dp1 / 1.12;
+			ivacc5 = com5 * 0.12;
+			cout << "\nCompras                " << fixed << setprecision(2) << com5 << endl;
+			cout << "\nIva por cobrar         " << fixed << setprecision(2) << ivacc5 << endl;
+			dp2 = dp1 + DP;
+			DP = dp2;
+			com6 = com5 + comp;
+			comp = com6;
+			ivacc6 = ivacc5 + Ivacc;
+			Ivacc = ivacc6;
+			cout << "                 ______________________________________________________" << endl;
+			cout << "TOTALES                " << com5 + ivacc5 << "                     " << dp1 << endl;
+			cout << "                 ______________________________________________________" << endl;
+			cout << "                 ______________________________________________________";
+			cout << "\n\n\n\n\nPresione Enter para regresar al menu de Jornalizacion";
+			system("pause");
+
+			break;
+		}
+
+		case 9: {
+			system("CLS");
+
+			double dp3, dp4, pro3, pro4, com7, com8, ivacc7, ivacc8;
+
+			cout << "         Compra de Mercaderia al  Credito Y Firmando Documentos    " << endl;
+			cout << "                           DEBE                   HABER    " << endl;
+			cout << " Documetos por pagar                                 "; cin >> dp3;
+			cout << " Proveedores                                         "; cin >> pro3;
+			com7 = (dp3 + pro3) / 1.12;
+			ivacc7 = com7 * 0.12;
+			cout << "\nCompras                " << fixed << setprecision(2) << com7 << endl;
+			cout << "\nIva por cobrar         " << fixed << setprecision(2) << ivacc7 << endl;
+			dp4 = dp3 + DP;
+			DP = dp4;
+			pro4 = pro3 + PRO;
+			PRO = pro4;
+			com8 = com7 + comp;
+			comp = com8;
+			ivacc8 = ivacc7 + Ivacc;
+			Ivacc = ivacc8;
+			cout << "                 ______________________________________________________" << endl;
+			cout << "TOTALES                " << com7 + ivacc7 << "                     " << dp3 + pro3 << endl;
+			cout << "                 ______________________________________________________" << endl;
+			cout << "                 ______________________________________________________";
+			cout << "\n\n\n\n\nPresione Enter para regresar al menu de Jornalizacion";
+			system("pause");
+
+
+			break;
+		}
+
+		case 10: {
+			system("CLS");
+			double 	cb7, cb8, pro5, pro6, dp5, dp6, com9, com10, ivacc9, ivacc10;
+
+			cout << "         Compra de Mercaderia al Contado, Credito Y Firmando Documentos    " << endl;
+			cout << "                           DEBE                   HABER    " << endl;
+			cout << " Caja Y Bancos                                       "; cin >> cb7;
+			cout << " Proveedores                                         "; cin >> pro5;
+			cout << " Documetos por pagar                                 "; cin >> dp5;
+			com9 = (cb7 + pro5 + dp5) / 1.12;
+			ivacc9 = com9 * 0.12;
+			cout << "\nCompras                " << fixed << setprecision(2) << com9 << endl;
+			cout << "\nIva por cobrar         " << fixed << setprecision(2) << ivacc9 << endl;
+			cb8 = Cajabancos - cb7;
+			Cajabancos = cb8;
+			pro6 = pro5 + PRO;
+			PRO = pro6;
+			dp6 = dp5 + DP;
+			DP = dp6;
+			com10 = com9 + comp;
+			comp = com10;
+			ivacc10 = ivacc9 + Ivacc;
+			Ivacc = ivacc10;
+			cout << "                 ______________________________________________________" << endl;
+			cout << "TOTALES                " << com9 + ivacc9 << "                     " << cb7 + pro5 + dp5 << endl;
+			cout << "                 ______________________________________________________" << endl;
+			cout << "                 ______________________________________________________";
+			cout << "\n\n\n\n\nPresione Enter para regresar al menu de Jornalizacion";
+			system("pause");
+			break;
+		}
+
+		case 11: {
+			system("CLS");
+			double pro7, pro8, cb9, cb10;
+			cout << "         Abono a Deuda con proveedores   " << endl;
+			cout << "                           DEBE                   HABER    " << endl;
+			cout << " Proveedores              "; cin >> pro7;
+			cb9 = pro7;
+			cout << " Caja Y Bancos                                       " << cb9 << endl;
+			pro8 = PRO - pro7;
+			PRO = pro8;
+			cb10 = Cajabancos - cb9;
+			Cajabancos = cb10;
+			cout << "                 ______________________________________________________" << endl;
+			cout << "TOTALES                    " << pro7 << "                     " << cb9 << endl;
+			cout << "                 ______________________________________________________" << endl;
+			cout << "                 ______________________________________________________";
+			cout << "\n\n\n\n\nPresione Enter para regresar al menu de Jornalizacion";
+			system("pause");
+			break;
+		}
+		case 12: {
+			system("CLS");
+			double ec1, ec2, ivacc11, ivacc12, cb11, cb12;
+			cout << "         Compra de Equipo de computo   " << endl;
+			cout << "                           DEBE                   HABER    " << endl;
+			cout << " Caja Y Bancos                                    "; cin >> cb11;
+			ec1 = cb11 / 1.12;
+			cout << "\nEquipo de Computacion    " << fixed << setprecision(2) << ec1 << endl;
+			ivacc11 = ec1 * 0.12;
+			cout << "\nIva por cobrar           " << fixed << setprecision(2) << ivacc11 << endl;
+			cb12 = Cajabancos - cb11;
+			Cajabancos = cb12;
+			ec2 = EC + ec1;
+			EC = ec2;
+			ivacc12 = Ivacc + ivacc11;
+			Ivacc = ivacc12;
+			cout << "                 ______________________________________________________" << endl;
+			cout << "TOTALES                    " << ec1 + ivacc11 << "                 " << cb11 << endl;
+			cout << "                 ______________________________________________________" << endl;
+			cout << "                 ______________________________________________________";
+			cout << "\n\n\n\n\nPresione Enter para regresar al menu de Jornalizacion";
+			system("pause");
+
+
+			break;
+		}
+
+		case 13: {
+			system("CLS");
+			double dp7, dp8, desc1, desc2, cb13, cb14;
+
+			cout << "         Abono a deuda sobre Documentos con descuentos   " << endl;
+			cout << "                           DEBE                   HABER    " << endl;
+			cout << "Documentos por pagar      "; cin >> dp7;
+			cout << "\nDescuentos Percibidos                             "; cin >> desc1;
+			cb13 = dp7 - desc1;
+			cout << " Caja Y Bancos                                    " << cb13 << endl;
+			dp8 = DP - dp7;
+			DP = dp8;
+			desc2 = DESC + desc1;
+			DESC = desc2;
+			cb14 = Cajabancos - cb13;
+			Cajabancos = cb14;
+			cout << "                 ______________________________________________________" << endl;
+			cout << "TOTALES                    " << dp7 << "                 " << desc1 + cb13 << endl;
+			cout << "                 ______________________________________________________" << endl;
+			cout << "                 ______________________________________________________";
+			cout << "\n\n\n\n\nPresione Enter para regresar al menu de Jornalizacion";
+			system("pause");
+
+			break;
+		}
+		case 14: {
+			system("CLS");
+			double dp9, dp10, cb15, cb16;
+			cout << "         Abono a deuda sobre Documentos   " << endl;
+			cout << "                           DEBE                   HABER    " << endl;
+			cout << "Documentos por pagar      "; cin >> dp9;
+			cb15 = dp9;
+			cout << " Caja Y Bancos                                    " << cb15 << endl;
+			dp10 = DP - dp9;
+			DP = dp10;
+			cb16 = Cajabancos - cb15;
+			Cajabancos = cb16;
+			cout << "                 ______________________________________________________" << endl;
+			cout << "TOTALES                    " << dp9 << "                 " << cb15 << endl;
+			cout << "                 ______________________________________________________" << endl;
+			cout << "                 ______________________________________________________";
+			cout << "\n\n\n\n\nPresione Enter para regresar al menu de Jornalizacion";
+			system("pause");
+			break;
+		}
+
+		case 15: {
+			system("CLS");
+			double sa1, sa2, sv1, sv2, cb17, cb18;
+			cout << "         	Pago de Sueldos de la Empresa   " << endl;
+			cout << "                           DEBE                   HABER    " << endl;
+			cout << "Sueldos Administracion    "; cin >> sa1;
+			cout << "Sueldos Sala de Ventas    "; cin >> sv1;
+			cb17 = sa1 + sv1;
+			cout << " Caja Y Bancos                                    " << cb17 << endl;
+			sa2 = SA + sa1;
+			SA = sa2;
+			sv2 = SV + sv1;
+			SV = sv2;
+			cb18 = Cajabancos - cb17;
+			Cajabancos = cb18;
+			cout << "                 ______________________________________________________" << endl;
+			cout << "TOTALES                    " << sa1 + sv1 << "                   " << cb17 << endl;
+			cout << "                 ______________________________________________________" << endl;
+			cout << "                 ______________________________________________________";
+			cout << "\n\n\n\n\nPresione Enter para regresar al menu de Jornalizacion";
+			system("pause");
+			break;
+		}
+		case 16: {
+			system("CLS");
+			double devsv1, devsv2, cb19, cb20, ivp11, ivp12;
+			cout << "         	Devolucion de Mercadería por Clientes  " << endl;
+			cout << "                           DEBE                   HABER    " << endl;
+			cout << " Caja Y Bancos                                    "; cin >> cb19;
+			devsv1 = cb19 / 1.12;
+			cout << "\nDevoluciones S/ Ventas     " << fixed << setprecision(2) << devsv1 << endl;
+			ivp11 = devsv1 * 0.12;
+			cout << "Iva por Pagar              " << fixed << setprecision(2) << ivp11 << endl;
+			cb20 = Cajabancos - cb19;
+			Cajabancos = cb20;
+			devsv2 = DEVVENTAS + devsv1;
+			DEVVENTAS = devsv2;
+			ivp12 = Iva_por_pagar - ivp11;
+			Iva_por_pagar = ivp12;
+			cout << "                 ______________________________________________________" << endl;
+			cout << "TOTALES                    " << devsv1 + ivp11 << "                 " << cb19 << endl;
+			cout << "                 ______________________________________________________" << endl;
+			cout << "                 ______________________________________________________";
+			cout << "\n\n\n\n\nPresione Enter para regresar al menu de Jornalizacion";
+			system("pause");
+			break;
+		}
+
+		case 17: {
+			system("CLS");
+			double pro9, pro10, devc1, devc2, ivacc13, ivacc14;
+
+			cout << "         	Devolucion de Mercadería A Proveedores " << endl;
+			cout << "                           DEBE                   HABER    " << endl;
+			cout << "Proveedores               "; cin >> pro9;
+			devc1 = pro9 / 1.12;
+			cout << "\nDevoluciones S/ Compras                         " << fixed << setprecision(2) << devc1 << endl;
+			ivacc13 = devc1 * 0.12;
+			cout << "\nIva por cobrar                                  " << fixed << setprecision(2) << ivacc13 << endl;
+			pro10 = PRO - pro9;
+			PRO = pro10;
+			devc2 = DEVCOM + devc1;
+			DEVCOM = devc2;
+			ivacc14 = Ivacc - ivacc13;
+			Ivacc = ivacc14;
+			cout << "                 ______________________________________________________" << endl;
+			cout << "TOTALES                    " << pro9 << "                 " << devc1 + ivacc13 << endl;
+			cout << "                 ______________________________________________________" << endl;
+			cout << "                 ______________________________________________________";
+			cout << "\n\n\n\n\nPresione Enter para regresar al menu de Jornalizacion";
+			system("pause");
+			break;
+		}
+
+		case 18: {
+			system("CLS");
+			double hp1, hp2, intg1, intg2, cb21, cb22;
+
+			cout << "         	Abono a Hipoteca Bancaria " << endl;
+			cout << "                           DEBE                   HABER    " << endl;
+			cout << "Hipotecas                 "; cin >> hp1;
+			cout << "Intereses Gasto           "; cin >> intg1;
+			cb21 = hp1 + intg1;
+			cout << "\nCaja Y Bancos                                    " << cb21 << endl;
+			hp2 = HP - hp1;
+			HP = hp2;
+			intg2 = INTG + intg1;
+			INTG = intg2;
+			cb22 = Cajabancos - cb21;
+			Cajabancos = cb22;
+			cout << "                 ______________________________________________________" << endl;
+			cout << "TOTALES                    " << hp1 + intg1 << "                " << cb21 << endl;
+			cout << "                 ______________________________________________________" << endl;
+			cout << "                 ______________________________________________________";
+			cout << "\n\n\n\n\nPresione Enter para regresar al menu de Jornalizacion";
+			system("pause");
+
+
+			break;
+		}
+		case 19: {
+			system("CLS");
+			double cb23, cb24, clie1, clie2;
+			cout << "         	Abono de Clientes " << endl;
+			cout << "                           DEBE                   HABER    " << endl;
+			cout << "Caja y Bancos             "; cin >> cb23;
+			clie1 = cb23;
+			cout << "\nClientes                                        " << clie1 << endl;
+			cb24 = Cajabancos + cb23;
+			Cajabancos = cb24;
+			clie2 = clientes - clie1;
+			clientes = clie2;
+			cout << "                 ______________________________________________________" << endl;
+			cout << "TOTALES                    " << cb23 << "                " << clie1 << endl;
+			cout << "                 ______________________________________________________" << endl;
+			cout << "                 ______________________________________________________";
+			cout << "\n\n\n\n\nPresione Enter para regresar al menu de Jornalizacion";
+			system("pause");
+
+			break;
+		}
+		case 20: {
+			system("CLS");
+			double cb25, cb26, docc1, docc2;
+			cout << "                          Abono a Documentos por cobrar " << endl;
+			cout << "                           DEBE                   HABER    " << endl;
+			cout << "Caja y Bancos             "; cin >> cb25;
+			docc1 = cb25;
+			cout << "\nDocumentos por cobrar                             " << docc1 << endl;
+			cb26 = Cajabancos + cb25;
+			Cajabancos = cb26;
+			docc2 = Docc - docc1;
+			Docc = docc2;
+			cout << "                 ______________________________________________________" << endl;
+			cout << "TOTALES                    " << cb25 << "                " << docc1 << endl;
+			cout << "                 ______________________________________________________" << endl;
+			cout << "                 ______________________________________________________";
+			cout << "\n\n\n\n\nPresione Enter para regresar al menu de Jornalizacion";
+			system("pause");
+			break;
+		}
+
+		case 21: {
+			system("CLS");
+			double depmb1, depec1, depvh1, agi1, dacummb1, dacumec1, dacvh1, acumgo1;
+			cout << "                     Partida De Depreciaciones y Amortizaciones " << endl;
+			cout << "                                        DEBE                   HABER    " << endl;
+			depmb1 = ME * 0.20;
+			cout << "Depreciacion Mobiliario y Equipo        " << depmb1 << endl;
+			depec1 = EC * 0.33;
+			cout << "Depreciacion  Equipo de Computo         " << depec1 << endl;
+			depvh1 = VH * 0.20;
+			cout << "Depreciacion  Vehiculos                 " << depvh1 << endl;
+			agi1 = GI * 0.10;
+			cout << "Amortizacion Gastos de Organizacion     " << agi1 << endl;
+			dacummb1 = depmb1;
+			cout << "\n\nDepreciacion Acumulada Mobiliario y Equipo                       " << dacummb1 << endl;
+			dacumec1 = depec1;
+			cout << "Depreciacion Acumulada Equipo de Computo                         " << dacumec1 << endl;
+			dacvh1 = depvh1;
+			cout << "Depreciacion Acumulada Vehiculos                                 " << dacvh1 << endl;
+			acumgo1 = agi1;
+			cout << "Amortizacion Acumulada Gastos de Organizacion                    " << acumgo1 << endl;
+			DEPMB = depmb1;
+			DEPEC = depec1;
+			DEPVH = depvh1;
+			AMORGO = agi1;
+			DEPACUMMB = dacummb1;
+			DEPACUMEC = dacumec1;
+			DEPACUMVH = dacvh1;
+			AMORACUMGO = acumgo1;
+			cout << "                 ______________________________________________________" << endl;
+			cout << "TOTALES                                 " << depmb1 + depec1 + depvh1 + agi1 << "                        " << dacummb1 + dacumec1 + depvh1 + acumgo1 << endl;
+			cout << "                 ______________________________________________________" << endl;
+			cout << "                 ______________________________________________________";
+			cout << "\n\n\n\n\nPresione Enter para regresar al menu de Jornalizacion";
+			system("pause");
+			break;
+		}
+
+		case 22: {
+			system("CLS");
+			cout << "              Partida de Cierre de Perdidas del Ejercicio"<<endl;
+			cout << "                                        DEBE                   HABER    " << endl;
+			cout << "Compras                                                           " << comp << endl;
+			cout << "Mercadería I                                                      " << MI << endl;
+			cout << "Devoluciones y Rebajas sobre Ventas                               " << DEVVENTAS << endl;
+			cout << "Sueldos Administracion                                            " << SA << endl;
+			cout << "Sueldos Sala de Ventas                                            " << SV << endl;
+			cout << "Depreciacion Mobiliario y Equipo                                  " << DEPMB << endl;
+			cout << "Depreciacion  Equipo de Computo                                   " << DEPEC << endl;
+			cout << "Depreciacion  Vehiculos                                           " << DEPVH << endl;
+			cout << "Amortizacion Gastos de Organizacion                               " << AMORGO << endl;
+			cout << "Intereses Gasto                                                   " << INTG << endl;
+			PG = comp + MI + DEVVENTAS + SA + SV + DEPMB + DEPEC + DEPVH + AMORGO + INTG;
+			cout << "Perdidas y Ganacias                     " << PG << endl;
+			cout << "                 ______________________________________________________" << endl;
+			cout << "TOTALES                                 " << PG << "              " << comp + MI + DEVVENTAS + SA + SV + DEPMB + DEPEC + DEPVH + AMORGO + INTG << endl;
+			cout << "                 ______________________________________________________" << endl;
+			cout << "                 ______________________________________________________";
+			cout << "\n\n\n\n\nPresione Enter para regresar al menu de Jornalizacion";
+			system("pause");
+
+			break;
+		}
+
+		case 23: {
+			system("CLS");
+			cout << "                            Partida de Cierre de Ganancias del Ejercicio"<<endl;
+			cout << "                                        DEBE                   HABER    " << endl;
+			cout << "Ventas                                 " << Ventas << endl;
+			cout << "Mercaderias II                         "; cin >> MI2;
+			cout << "Devoluciones sobre Compras             " << DEVCOM << endl;
+			cout << "Descuentos Percibidos                  " << DESC << endl;
+			PG2 = Ventas + MI2 + DEVCOM + DESC;
+			cout << "Perdidas y Ganancias                                             " << PG2 << endl;
+			cout << "                 ______________________________________________________" << endl;
+			cout << "                 ______________________________________________________" << endl;
+			cout << "TOTALES                                 " << Ventas + MI2 + DEVCOM + DESC <<"            " << PG2 << endl;
+			cout << "                 ______________________________________________________" << endl;
+			cout << "                 ______________________________________________________";
+			cout << "\n\n\n\n\nPresione Enter para regresar al menu de Jornalizacion";
+			system("pause");
+
+			break;
+		}
+		case 24: {
+			system("CLS");
+			cout << "                            Partida de Cierre de Perdida o Ganancia del Ejercicio" << endl;
+			PRG = PG2 - PG;
+			if (PG > PG2) {
+
+			cout << "                                       Perdida del Ejercicio" << endl;
+			cout << "                                        DEBE                   HABER    " << endl;
+		    cout << "Capital                                " <<PRG<< endl;
+			cout << "Perdidas y Ganancias                                             " <<PRG<< endl;
+			cout << "                 ______________________________________________________" << endl;
+			cout << "                 ______________________________________________________" << endl;
+			cout << "TOTALES                                 " <<PRG<< "              " <<PRG<< endl;
+			cout << "                 ______________________________________________________" << endl;
+			cout << "                 ______________________________________________________";
+			cout << "\n\n\n\n\nPresione Enter para regresar al menu de Jornalizacion";
+			system("pause");
+			}
+			else {
+				cout << "                                       Ganacias del Ejercicio" << endl;
+				cout << "                                        DEBE                   HABER    " << endl;
+				cout << "Capital                                " <<PRG << endl;
+				cout << "Perdidas y Ganancias                                              " <<PRG << endl;
+				cout << "                 ______________________________________________________" << endl;
+				cout << "                 ______________________________________________________" << endl;
+				cout << "TOTALES                                 " << PRG << "             " << PRG << endl;
+				cout << "                 ______________________________________________________" << endl;
+				cout << "                 ______________________________________________________";
+				cout << "\n\n\n\n\nPresione Enter para regresar al menu de Jornalizacion";
+				system("pause");
+			}
+
+			break;
+		}
+		case 25: {
+			system("CLS");
+			double CAP, Debe, Haber;
+			CAP = capital + PRG;
+			cout << "                                  Activos y Pasivos del Ejercicio       " << endl;
+			cout << "                                        DEBE                   HABER    " << endl;
+			cout << "Proveedores                                " <<PRO<< endl;
+			cout << "Documentos Por Pagar                       " <<DP<< endl;
+			cout << "Hipotecas                                  " <<HP<< endl;
+			cout << "Depreciacion Acumulada Mobiliario y Equipo " <<DEPACUMMB<< endl;
+			cout << "Depreciacion Acumulada Equipo de Computo   " <<DEPACUMEC<< endl;
+			cout << "Depreciacion Acumulada Vehiculos           " <<DEPACUMVH<< endl;
+			cout << "Amortizacion Acumulada Gastos de Org       " <<AMORACUMGO<< endl;
+			cout << "Iva por pagar                              " << Iva_por_pagar<<endl;
+			cout << "Capital                                    " << CAP << endl;
+			cout << "Caja y Bancos                                                   " << Cajabancos << endl;
+			cout << "Documentos por Cobrar                                           " << Docc << endl;
+			cout << "Clientes                                                        " << clientes << endl;
+			cout << "Mercaderia                                                      " << MI2 << endl;
+			cout << "Mobiliario y Equipo                                             " << ME << endl;
+			cout << "Inmbuebles                                                      " << IM << endl;
+			cout << "Equipo de Computacion                                           " << EC << endl;
+			cout << "Gastos de Instalacion                                           " << GI << endl;
+			cout << "Papelería y Utiles                                              " << PU << endl;
+			cout << "Vehiculos                                                       " << VH << endl;
+			cout << "Iva por Cobrar                                                  " << Ivacc << endl;
+			Debe = PRO + DP + HP + DEPACUMMB + DEPACUMEC + DEPACUMVH + AMORACUMGO + CAP+ Iva_por_pagar;
+			Haber = Cajabancos + Docc + clientes + MI2 + ME + IM + EC + GI + PU + VH + Ivacc;
+			cout << "                 ______________________________________________________" << endl;
+			cout << "                 ______________________________________________________" << endl;
+			cout << "TOTALES                                 " << Debe << "                   " << Haber << endl;
+			cout << "                 ______________________________________________________" << endl;
+			cout << "                 ______________________________________________________";
+			cout << "\n\n\n\n\nPresione Enter para regresar al menu de Jornalizacion";
+			system("pause");
+			break;
+		}
+		case 26: {
+
+			repite = false;
+		}
+
+		}
+	} while (repite);
+
+	return menu();
+}
+
+void Balnce() {
+	double debe = 0, haber = 0;
+	system("CLS");
+	cout << "                        BALANCE DE SALDOS              " << endl;
+	cout << "                            DEBE                     HABER   " << endl;
+	cout << "Caja y Bancos               " << Cajabancos << endl;
+	cout << "Clientes                    " << clientes << endl;
+	cout << "Documentos por Cobrar       " << Docc << endl;
+	cout << "Equipo de Computacion       " << EC << endl;
+	cout << "Gastos de Instalacion       " << GI << endl;
+	cout << "Inmbuebles                  " << IM << endl;
+	cout << "Iva por Cobrar              " << Ivacc << endl;
+	cout << "Mobiliario y Equipo         " << ME << endl;
+	cout << "Mercaderia I                " << MI << endl;
+	cout << "Papelería y Utiles          " << PU << endl;
+	cout << "Vehiculos                   " << VH << endl;
+	cout << "Compras                     " << comp << endl;
+	cout << "Sueldos Sala de Ventas      " << SV << endl;
+	cout << "Sueldos Administracion      " << SA << endl;
+	cout << "Devoluciones S/Ventas       " << DEVVENTAS << endl;
+	cout << "Intereses Gasto             " << INTG << endl;
+	cout << "Depreciacion Mob y Equipo   " << DEPMB << endl;
+	cout << "Depreciacion E de Computo   " << DEPEC << endl;
+	cout << "Depreciacion Vehiculos      " << DEPVH << endl;
+	cout << "Amortizacion Gastos de Org. " << AMORGO << endl;
+	cout << "Ventas                                           " << Ventas;
+	cout << "\nIva por pagar                                    " << Iva_por_pagar;
+	cout << "\nProveedores                                      " << PRO;
+	cout << "\nHipotecas                                        " << HP;
+	cout << "\nDocumentos por pagar                             " << DP;
+	cout << "\nDescuentos Percibidos                            " << DESC;
+	cout << "\nDevoluciones S/Compras                           " << DEVCOM;
+	cout << "\nDepreciacion Acumulada Mobiliario y Equipo       " << DEPACUMMB;
+	cout << "\nDepreciacion Acumulada Equipo de Computo         " << DEPACUMEC;
+	cout << "\nDepreciacion Acumulada Vehiculos                 " << DEPVH;
+	cout << "\nAmortizacion Acumulada Gastos de Organizacion    " << AMORACUMGO;
+	cout << "\nCapital                                          " << capital;
+	debe = Cajabancos + clientes + Docc + EC + GI + IM + Ivacc + ME + MI + PU + VH + comp + SV + SA + DEVVENTAS + INTG + DEPMB + DEPEC + DEPVH + AMORGO;
+	haber = Ventas + Iva_por_pagar + PRO + HP + DP + capital + DESC + DEVCOM + DEPACUMMB + DEPACUMEC + DEPVH + AMORACUMGO;
+	cout << "\n                      __________________________________________" << endl;
+	cout << "Totales                    " << debe << "                     " << haber << endl;
+	cout << "                      __________________________________________" << endl;
+	cout << "                      __________________________________________" << endl;
+	system("pause");
+	return menu();
+}
+
+
+void Resultados() {
+	double GASTOSORG;
+	system("CLS");
+	cout << "                        ESTADO DE RESULTADOS            " << endl;
+	cout << "                            Ingresos       " << endl;
+	cout << "Ventas                                                                     " << Ventas<<endl;
+	cout << "Devoluciones Sobre ventas                                               (-)" << DEVVENTAS<<endl;
+	VENTASNETAS = Ventas - DEVVENTAS;
+	cout << "                                                                   __________________" << endl;
+	cout << "Ventas Netas                                                               " << VENTASNETAS<<endl;
+	cout << "\n\n                    Costo De Ventas          " << endl;
+	cout << "Mercaderia I                                     " << MI << endl;
+	cout << "Compras                      " << comp << endl;
+	cout << "Devoluciones S/Compras    (-)" << DEVCOM<<endl;
+	cout << "                         __________________" << endl;
+	COMPRASNETAS = comp - DEVCOM;
+	cout << "Compras Netas                                    " << COMPRASNETAS << endl;
+	cout << "                                          __________________" << endl;
+	MERCAD = MI + COMPRASNETAS;
+	cout << "Mercaderias Disponibles                          " << MERCAD << endl;
+	cout << "Mercaderias II                              (-)  " << MI2 << endl;
+	cout << "                                          __________________" << endl; 
+	COSTOV = MERCAD - MI2;
+	cout << "Costo de Ventas                                                            "<<COSTOV << endl;
+	cout << "                                                                    __________________" << endl;
+	GOP = VENTASNETAS - COSTOV; 
+	cout << "Ganancia o Perdida del Ejercicio                                           "<<GOP<< endl;
+	cout << "\n\n                    Gastos De Operacion          " << endl;
+	cout << "GASTOS DE ADMINISTRACION         " << endl;
+	cout << "Sueldos Administracion         " << SA << endl;
+	cout << "Depreciacion Mob y Equipo      " << DEPMB << endl;
+	cout << "Depreciacion E de Computo      " << DEPEC << endl;
+	cout << "Depreciacion Vehiculos         " << DEPVH << endl;
+	cout << "Amortizacion Gastos de Org.    " << AMORGO << endl;
+	cout << "                          __________________" << endl;
+	GASTOSORG = SA + DEPMB + DEPEC + DEPVH + AMORGO;
+	cout << "                                                 " << GASTOSORG << endl;
+	cout << "GASTOS DE OPERACION         " << endl;
+	cout << "Sueldos Sala de Ventas                           " << SV << endl;
+	cout << "                                            __________________" << endl;
+	GOP1 = GASTOSORG + SV;
+	cout << "                                                                           " << GOP1 << endl;
+	cout << "                                                                    __________________" << endl;
+	GOP2 = GOP - GOP1;
+	cout << "Perdida o Ganacia en Operacion                                             " << GOP2 << endl;
+	cout << "OTROS GASTOS Y/O PRODUCTOS FINANCIEROS       " << endl;
+	cout << "Otros Gastos        " << endl;
+	cout << "Intereses Gasto                                 "<< INTG << endl;
+	cout << "Otros Productos Financieros       " << endl;
+	cout << "Descuentos Percibidos                           "<< DESC <<endl;
+	PRODUCGASTOS = INTG - DESC;
+	cout << "                                             __________________            " <<PRODUCGASTOS<<endl;
+	cout << "                                                                    __________________            "<<endl;
+	PEROGANAN = GOP2 - PRODUCGASTOS;
+	cout << "Perdida o Ganancia del Ejercicio                                           " << PEROGANAN<<endl;
+	cout << "                                                                    __________________            "<<endl;
+	cout << "                                                                    __________________            "<<endl;
+	system("pause");
+	return menu();
 }
 
 
 
-void miembros (){
-system("CLS");	
-	
-cout<<"           Nombre : Marlon Adrian Gonzalez Garzona       Carnet : 6990-19-12170"<<endl;
-cout<<"           Nombre : Marcos Sleyther Castellanos Lemus	 Carnet : 6990-19-9299"<<endl;
-cout<<"           Nombre : Luis Simon Lorenzo Gonzalez          Carnet : 6990-19-12141"<<endl;	
-cout<<"           Nombre : Eduardo Antonio Perez Ajquijay       Carnet : 6990-19-547";	
-cout<<"\n\n\n\nPresiones Enter para regresar al menú principal";
-getch ();
-return menu();	
-	
+void General() {
+	system("CLS");
+	cout << "                       BALANCE GENERAL             " << endl;
+	cout << "ACTIVO " << endl;
+	cout << "Circulante " << endl;
+	cout << "Caja y Bancos                                   "<< Cajabancos << endl;
+	cout << "Documentos por Cobrar                           " << Docc << endl;
+	cout << "Iva por Cobrar                                  " << Ivacc << endl;
+	cout << "Clientes                                        " << clientes << endl;
+	cout << "Mercaderias                                     " << MI2 << endl;
+	cout << "Inmbuebles                                      " << IM << endl;
+	cout << "                                            __________________" << endl;
+	ACCIRCULANTE = Cajabancos + Docc + clientes + MI2 + Ivacc+IM;
+	cout << "TOtal Activo Circulante                                                    " << ACCIRCULANTE << endl;
+	cout << "Fijo " << endl;
+	cout << "Mobiliario y Equipo                             " << ME << endl;
+	cout << "Depreciacion Acumulada Mobiliario y Equipo      " << DEPACUMMB<<endl;
+	cout << "                                            __________________" << endl;
+	cout << "Equipo de Computacion                           " << EC << endl;
+	cout << "Depreciacion Acumulada Equipo de Computo        " << DEPACUMEC <<endl;
+	cout << "                                            __________________" << endl;
+	cout << "Vehiculos                                       " << VH << endl;
+	cout << "Depreciacion Acumulada Vehiculos                " << DEPVH <<endl;
+    cout << "                                            __________________" << endl;
+	ACFIJO = (ME + EC + VH) - (DEPACUMMB + DEPACUMEC + DEPVH);
+	cout << "Total Activo Fijo                                                          " << ACFIJO << endl;
+	cout << "Diferido" << endl;
+	cout << "Gastos de Instalacion                           " << GI << endl; 
+	cout << "Amortizacion Acumulada Gastos de Org            " << AMORACUMGO<<endl;
+	cout << "                                            __________________" << endl;
+	cout << "Papelería y Utiles                              " << PU << endl;
+	ACDIFERIDO = (GI - AMORACUMGO) + PU;
+	cout << "TOtal Activo Diferido                                                      " << ACDIFERIDO << endl;
+	cout << "                                                                     __________________" << endl;
+	SUMAACTIVO = ACCIRCULANTE + ACFIJO + ACDIFERIDO;
+	cout << "Suma del Activo                                                            " << SUMAACTIVO << endl;
+	cout << "                                                                     __________________" << endl;
+	cout << "                                                                     __________________" << endl;
+	cout << "PASIVO " << endl;
+	cout << "Circulante " << endl;
+	cout << "Proveedores                                      " << PRO << endl;
+	cout << "Documentos por pagar                             " << DP  << endl;
+	cout << "Iva por pagar                                    " << Iva_por_pagar <<endl;
+	PASIVOCIR = PRO + DP + Iva_por_pagar;
+	cout << "                                                                     __________________" << endl;
+	cout << "Total Pasivo Circulante                                                    " << PASIVOCIR << endl;
+	cout << "Fijo  " << endl;
+	cout << "Hipotecas                                        " << HP  << endl;
+	PASIVOFIJO = HP;
+	cout << "                                                                     __________________" << endl;
+	cout << "Total Pasivo FIJO                                                          " << PASIVOFIJO << endl;
+	cout << "Capital de la Empresa " << endl;
+	cout << "Capital                                                                    " << capital <<endl;
+	cout << "Perdida o Ganancia del Ejercicio                                           " << PEROGANAN <<endl;
+	SUMAPASIVO = PASIVOCIR + PASIVOFIJO + capital + PEROGANAN;
+	cout << "                                                                     __________________" << endl;
+	cout << "Suma del Pasivo + Capital                                                  " << SUMAPASIVO << endl;
+	cout << "                                                                     __________________" << endl;
+	cout << "                                                                     __________________" << endl;
+
+	system("pause");
+	return menu();
 }
 
-void version (){
-system("CLS");
-cout<< "                         Version del Programa 1.0.1  Copyrigth 2019 ";
-getch();
-return menu();	
+
+
+void Razones() {
+
 }
+
+
+
+void miembros() {
+	system("CLS");
+
+	cout << "           Nombre : Marlon Adrian Gonzalez Garzona       Carnet : 6990-19-12170" << endl;
+	cout << "           Nombre : Marcos Sleyther Castellanos Lemus	 Carnet : 6990-19-9299" << endl;
+	cout << "           Nombre : Luis Simon Lorenzo Gonzalez          Carnet : 6990-19-12141" << endl;
+	cout << "           Nombre : Eduardo Antonio Perez Ajquijay       Carnet : 6990-19-547";
+	cout << "\n\n\n\nPresiones Enter para regresar al menú principal";
+	system("pause");
+	return menu();
+
+}
+
+void version() {
+	system("CLS");
+	cout << "                         Version del Programa 1.0.1  Copyrigth 2019 ";
+	system("pause");
+	return menu();
+}
+
 	
