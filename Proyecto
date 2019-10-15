@@ -35,7 +35,6 @@ void menu() {
 	int opcion;
 
 	do {
-	/**Menu principal */
 		system("CLS");
 		cout << "                                      Menu Principal Proyecto de Contabilidad" << endl;
 		cout << "                                                  UMG SEDE ZONA 16" << endl;
@@ -48,7 +47,12 @@ void menu() {
 		cout << "7.Desarrolladores del Sistema                             " << endl;
 		cout << "8.Version del Programa                                    " << endl;
 		cout << "9.Salir                                                   " << endl;
+		
 		cout << "\nElija una de Las Opciones: "; cin >> opcion;
+
+		cout << "\n\n\n\n 'Si puedes imaginarlo, puedes programarlo'  " << endl;
+		cout << "            Alejandro Taboada (1997 - 2019)"<<endl;
+
 
 		switch (opcion) {
 
@@ -165,7 +169,7 @@ void Jornalizacion() {
 		cout << "24. Partida de Cierre Perdida O Ganancias    " << endl;
 		cout << "25. Partida de Cierre Activos y Pasivos      " << endl;
 		cout << "26. Salir                                    " << endl;
-		cin >> partida;
+		cout << "Elija la Opcion que Desea: ";cin >> partida;
 
 		switch (partida) {
 
@@ -1032,8 +1036,840 @@ void General() {
 
 
 void Razones() {
+	system("CLS");
+	bool repite = true;
+	int opcion = 0;
+	cout << "                      Razones Financieras            " << endl;
+	do {
+		system("CLS");
+		cout << "                                      Menu Principal Proyecto de Contabilidad" << endl;
+		cout << "                                                  UMG SEDE ZONA 16" << endl;
+		cout << "1.Indice De Liquidez                                      " << endl;
+		cout << "2.Prueba de Acido                                         " << endl;
+		cout << "3.Prueba Defensiva                                        " << endl;
+		cout << "4.Proporcion de Financiamiento Externo                    " << endl;
+		cout << "5.Proporcion de Financiamiento Interno                    " << endl;
+		cout << "6.Rotacion del Activo Total                               " << endl;
+		cout << "7.Rotacion de Proveedores                                 " << endl;
+		cout << "8.Rentabilidad Sobre Ventas                               " << endl;
+		cout << "9.Utiliadad de Operacion a Ventas                         " << endl;
+		cout << "10.Rentabilidad sobre el Activo                           " << endl;
+		cout << "11.Rentabilidad sobre el Capital                          " << endl;
+		cout << "12.Rotacion de Inventarios                                " << endl;
+		cout << "13.Rotacion de Cuentas Por Cobrar                         " << endl;
+		cout << "14.Origen de Capital a largo plazo                        " << endl;
+		cout << "15.Indice de inversion del capital                        " << endl;
+		cout << "\nElija una de Las Opciones: "; cin >> opcion;
+		system("pause");
+		switch (opcion) {
+
+		case  1: {
+			system("CLS");
+			double Liquidez;
+			cout << "                           Indice De Liquidez                          " << endl;
+			cout << "\n Mide el grado en que una empresa puede cumplir con sus obligaciones a corto plazo"<<endl;
+			Liquidez = ACCIRCULANTE / PASIVOCIR;
+			cout << "\n\nIndice De Liquidez = Activo Ciculante / Pasivo Circulante :"<< Liquidez << endl ;
+			if (Liquidez = 0) {
+				cout << "\nLa Empresa no Puede cubrir sus deudas con los recursos Actuales,, se recomienda elaboral una estrategia urgentemente ya que podria ir a la quiebra facilmente";
+
+			}
+			else if ((Liquidez >= 0) && (Liquidez <= 1))
+			{
+			cout << "\nLa Empresa no Puede cubrir sus deudas con los recursos Actuales, , se recomienda elaboral una estrategia que permita elevar las ventas y como consecuencias los Activos";
+			}
+			else if (Liquidez > 1 && Liquidez <= 2)
+			{
+				cout << "\nLa Empresa tiene la suficiente liquidez para cubrir sus deudas a corto plazo y quedar con un minimo para seguir operaciones, es priorida el crecimiento de las ventas ";
+
+			}
+			else if (Liquidez > 2)
+			{
+			cout << "\nLa Empresa tiene muy buena liquidez por lo cual en este momento puede cubrir todas las deudas a corto plazo y seguir operaciones sin ningun tipo de problema ";
+			}
+			
+			system("pause");
+			break;
+		}
+
+		case 2: {
+			system("CLS");
+			double Acido;
+			cout << "                           Prueba del Acido                          " << endl;
+			cout << "\n\n Mide el grado en que una empresa puede cumplir con sus obligaciones a corto plazo sin utilizar la mercaderia que posee en el momento"<<endl;
+			Acido = (ACCIRCULANTE- MI2) / PASIVOCIR;
+			cout << "\nPrueba del Acido  = (Activo Ciculante - Inventarios ) / Pasivo Circulante :" << Acido <<endl;
+			if (Acido > 0 && Acido <= 1) {
+				cout << "\nLa empresa no cuenta con la liquidez para solventar sus deudas a corto plazo sin usar el inventario"<<endl;
+				cout << "para aumentar el flujo de efectivo y poder solventarlas sin la necesidad de recurir a su Stock, se recomiendan nuevas inversiones en productos";
+			}
+			else if (Acido > 1 && Acido <= 2) {
+				cout << "\nCon la liquidez Acutal la empresa logra cubrir sus deudas sin utilizar su Stock,pero su flujo de efectivo baja considerablemente";
+			}
+			else if (Acido > 2) {
+				cout << "\nLa empresa posee buena liquidez, puede cubrir todas sus deudas sin usar sus inventarios y su flujo de efectivo puede mantenerse estable";
+			}
+			system("pause");
+			break;
+		}
+
+
+		case 3: {
+			system("CLS");
+			double defensiva;
+			cout << "                           Prueba Defensiva                          " << endl;
+			cout << "\n\nIndica la capacidad de la empresa para operar con sus activos mas liquidos, sin recurrir a sus flujos de venta " << endl;
+			defensiva = Cajabancos / PASIVOCIR;
+			cout << "\n\n Prueba Defensiva =  Caja y Bancos / Pasivo Circulante :" << defensiva << endl;
+			if (defensiva > 0 && defensiva <= 1) {
+				cout << "\n\n Con el efectivo Actual la empresa no puede cubrir sus deudas a corto plazo, se necesitaria elevar las ventas al contado para generar mejor liquidez" << endl;
+			}
+			else if (defensiva > 1 && defensiva <= 2) {
+				cout << "\n\n Con el efectivo Actual la empresa puede cubrir sus deudas a corto plazo pero, su efectivo disminuiria considerablemente y tendria lo basico para seguir con sus operaciones" << endl;
+			}
+			else if (defensiva > 2) {
+				cout << "\n\n Con el efectivo Actual la empresa puede cubrir sus deudas y su efectivo se mantiene estable, la empresa cuenta con una muy buena liquidez" << endl;
+			}
+			system("pause");
+			break;
+		}
+
+		case 4: {
+			system("CLS");
+			double externo;
+			cout << "                           Proporcion de Financiamiento Externo                         " << endl;
+			cout << "\n Mide la proporcion de los activos totales financiados por los acreedores de la empresa " << endl;
+			externo = (PASIVOCIR + PASIVOFIJO) / SUMAACTIVO;
+			cout << "\n\n Proporcion de Financiamiento Externo = Pasivo Total / Activo Total: " << externo << endl;
+
+			if (externo > 0 && externo >= 1) {
+				cout << "El porcentaje de Endeudamiento es muy bajo la empresa no depende  de los Acreedores externos para su funcionamiento";
+
+			}
+
+			else if (externo > 1 && externo <= 2) {
+
+				cout << "El porcentaje de Endeudamiento es alto pero aun se pude cancelar mediante estrategias de eficiencia en las ventas";
+			}
+
+			else if (externo > 2) {
+				cout << "El Endeudamietno supera por mucho a lo bienes que posee la empresa es una situacion que requiere medidas inmediatas para poder disiminuir la deuda con los acreedores";
+			}
+
+			system("pause");
+			break;
+		}
+		case 5:
+		{
+			system("CLS");
+			double interno;
+			cout << "                   Proporcion de Financiamiento Interno                    " << endl;
+			cout << "\n Expresa la relación que existe dentro de la estructura de capital entre los recursos proporcionados por los accionistas y los fondos propios"<<endl;
+			interno = capital / SUMAACTIVO;
+			cout << "\n\nProporcion de Financiamiento Interno =   Capital / Activo Total : " << interno << endl;
+			if (interno > 0 && interno <= 1) {
+				cout << "La empresa depende de los recursos propios y ya no de la inversion de los accionistas";
+			}
+			else if (interno > 1 && interno <= 2) {
+				cout << "La empresa aun depende en parte de los recursos proporcionados por los socios aunque en poco tiempo puede elevar sus activos";
+			}
+			else if (interno > 2) {
+				cout << "La empresa no tiene Activos suficientas para valerse por si misma aun depende de las inversiones de los socios para poder crecer";
+			}
+			system("pause");
+			break;
+		}
+		case 6:
+		{
+			system("CLS");
+			double rotacionactivo;
+			int empresa;
+			bool repite = true;
+			do{
+			cout << "                    Rotacion del Activo Total                               " << endl;
+			cout << "\n Mide la eficacia general en el uso de los activos               " << endl;
+			rotacionactivo = VENTASNETAS / SUMAACTIVO;
+			cout << " \n\n   Rotacion del Activo Total = Ventas Netas / Activo Total:" << rotacionactivo << endl;
+			cout << "\n\nEmpresa de Venta de Alimentos o Restaurantes no.1" << endl;
+			cout << "Empresa de Venta de Ropa y Moda no.2" << endl;
+			cout << "Empresa de Venta de Tecnologia no.3" << endl;
+			cout << "Empresa de Venta de Mobiliario y Equipo no.4" << endl;
+			cout << "Empresa de Venta de Vehiculos no.5" << endl;
+			cout << "Empresa de Servicios no.6 " << endl;
+			cout << "Ver otra razon financiera no.7" << endl;
+			cout << "Escoja la Actividad principal del la empresa : "; cin >> empresa;
+
+			switch (empresa) {
+			case 1: {
+				system("CLS");
+				cout << "Empresa de Venta de Alimentos o Restaurantes" << endl;
+				cout << " \n\n   Rotacion del Activo Total = Ventas Netas / Activo Total:" << rotacionactivo << endl;
+				if (rotacionactivo = 0) {
+
+					cout << "\nNo hubo rotacion en los activos de la empresa verificar este departamento y los procesos administrativos que estan aplicando" << endl;
+				}
+
+				else if (rotacionactivo <= 0.25) {
+					cout << "\nLa rotacion de los Activos fue muy baja, la empresa no utiliza bien los activos para generar ventas " << endl;
+				}
+				else if (rotacionactivo > 0.25 && rotacionactivo <= 0.70)
+				{
+					cout << "\nLa rotacion en los Activos de la empresa mostro un grado aceptable y estable " << endl;
+				}
+				else if (rotacionactivo > 0.70) {
+
+					cout << "\nLa rotacion en los Activos de la empresa fue muy buena la empresa utiliza correctamente sus activos para convertirlos en ventas" << endl;
+				}
+
+
+				system("pause");
+				break;
+			}
+			case 2: {
+				system("CLS");
+				cout << "Empresa de Venta de Ropa y Moda" << endl;
+				cout << " \n\n   Rotacion del Activo Total = Ventas Netas / Activo Total:" << rotacionactivo << endl;
+
+				if (rotacionactivo = 0) {
+
+					cout << "\nNo hubo rotacion en los activos de la empresa verificar este departamento y los procesos administrativos que estan aplicando" << endl;
+				}
+
+				else if (rotacionactivo <= 0.25) {
+					cout << "\nLa rotacion de los Activos fue muy baja, la empresa no utiliza bien los activos para generar ventas " << endl;
+				}
+				else if (rotacionactivo > 0.25 && rotacionactivo <= 0.70)
+				{
+					cout << "\nLa rotacion en los Activos de la empresa mostro un grado aceptable y estable " << endl;
+				}
+				else if (rotacionactivo > 0.70) {
+
+					cout << "\nLa rotacion en los Activos de la empresa fue muy buena la empresa utiliza correctamente sus activos para convertirlos en ventas" << endl;
+				}
+				system("pause");
+				break;
+			}
+			case 3: {
+				system("CLS");
+				cout << "Empresa de Venta de Tecnologia " << endl;
+				cout << " \n\n   Rotacion del Activo Total = Ventas Netas / Activo Total:" << rotacionactivo << endl;
+
+				if (rotacionactivo = 0) {
+
+					cout << "\nNo hubo rotacion en los activos de la empresa verificar este departamento y los procesos administrativos que estan aplicando" << endl;
+				}
+
+				else if (rotacionactivo <= 0.25) {
+					cout << "\nLa rotacion de los Activos fue muy baja, la empresa no utiliza bien los activos para generar ventas " << endl;
+				}
+				else if (rotacionactivo > 0.25 && rotacionactivo <= 0.70)
+				{
+					cout << "\nLa rotacion en los Activos de la empresa mostro un grado aceptable y estable " << endl;
+				}
+				else if (rotacionactivo > 0.70) {
+
+					cout << "\nLa rotacion en los Activos de la empresa fue muy buena la empresa utiliza correctamente sus activos para convertirlos en ventas" << endl;
+				}
+				system("pause");
+				break;
+			}
+			case 4: {
+				system("CLS");
+				cout << "Empresa de Venta de Mobliario y equipo " << endl;
+				cout << " \n\n   Rotacion del Activo Total = Ventas Netas / Activo Total:" << rotacionactivo << endl;
+
+				if (rotacionactivo = 0) {
+
+					cout << "\nNo hubo rotacion en los activos de la empresa verificar este departamento y los procesos administrativos que estan aplicando" << endl;
+				}
+
+				else if (rotacionactivo <= 0.25) {
+					cout << "\nLa rotacion de los Activos fue muy baja, la empresa no utiliza bien los activos para generar ventas " << endl;
+				}
+				else if (rotacionactivo > 0.25 && rotacionactivo <= 0.70)
+				{
+					cout << "\nLa rotacion en los Activos de la empresa mostro un grado aceptable y estable " << endl;
+				}
+				else if (rotacionactivo > 0.70) {
+
+					cout << "\nLa rotacion en los Activos de la empresa fue muy buena la empresa utiliza correctamente sus activos para convertirlos en ventas" << endl;
+				}
+
+				system("pause");
+				break;
+			}
+			case 5: {
+				system("CLS");
+				cout << "Empresa de Venta de Vehiculos " << endl;
+				cout << " \n\n   Rotacion del Activo Total = Ventas Netas / Activo Total:" << rotacionactivo << endl;
+
+				if (rotacionactivo = 0) {
+
+					cout << "\nNo hubo rotacion en los activos de la empresa verificar este departamento y los procesos administrativos que estan aplicando" << endl;
+				}
+
+				else if (rotacionactivo <= 0.25) {
+					cout << "\nLa rotacion de los Activos fue muy baja, la empresa no utiliza bien los activos para generar ventas " << endl;
+				}
+				else if (rotacionactivo > 0.25 && rotacionactivo <= 0.70)
+				{
+					cout << "\nLa rotacion en los Activos de la empresa mostro un grado aceptable y estable " << endl;
+				}
+				else if (rotacionactivo > 0.70) {
+
+					cout << "\nLa rotacion en los Activos de la empresa fue muy buena la empresa utiliza correctamente sus activos para convertirlos en ventas" << endl;
+				}
+
+				system("pause");
+				break;
+			}
+			case 6: {
+				system("CLS");
+				cout << "Empresa de Prestacion de Servicios " << endl;
+				cout << " \n\n   Rotacion del Activo Total = Ventas Netas / Activo Total:" << rotacionactivo << endl;
+
+				if (rotacionactivo = 0) {
+
+					cout << "\nNo hubo rotacion en los activos de la empresa verificar este departamento y los procesos administrativos que estan aplicando" << endl;
+				}
+
+				else if (rotacionactivo <= 0.25) {
+					cout << "\nLa rotacion de los Activos fue muy baja, la empresa no utiliza bien los activos para generar ventas " << endl;
+				}
+				else if (rotacionactivo > 0.25 && rotacionactivo <= 0.70)
+				{
+					cout << "\nLa rotacion en los Activos de la empresa mostro un grado aceptable y estable " << endl;
+				}
+				else if (rotacionactivo > 0.70) {
+
+					cout << "\nLa rotacion en los Activos de la empresa fue muy buena la empresa utiliza correctamente sus activos para convertirlos en ventas" << endl;
+				}
+
+				system("pause");
+				break;
+			}
+			case 7: {
+				repite = false;
+			}
+
+
+
+
+			}
+
+
+		} while (repite);
+
+		system("pause");
+		break;
+		}
+
+
+		case 7:
+		{
+			system("CLS");
+			double rotacionproveedores;
+			cout << "                         Rotacion de Proveedores                              " << endl;
+			cout << "\n Mide los dias de plazo que posee la empresa para los pagos a Proveedores, el calculo esta echo en año comercial 360 dias";
+			rotacionproveedores = (PRO / COSTOV) * 360;
+			cout << "\n Rotacion de Proveedores =  (Proveedores / Costo de Ventas ) * 360 dias: " << rotacionproveedores << endl;
+
+			if (rotacionproveedores > 0 && rotacionproveedores <= 30) {
+				cout << "La rotacion en tiempo que tiene la empresa con los proveedores es poca los dias plazo que se tiene con ellos limita el crecimiento del flujo de efectivo";
+
+			}
+			else if (rotacionproveedores > 30 && rotacionproveedores <= 60) {
+				cout << "La rotacion en tiempo que tiene la empresa con los proveedores es normal esta estable y tiene mas tiempo para utilizar invertir el efectivo antes de solventar las deudas ";
+			}
+			else if (rotacionproveedores > 60)
+			{
+				cout << "La rotacion en tiempo que tiene la empresa con los proveedores es muy buena, está logrando tener buenas relaciones con los proveedores y por eso el plazo de pago es mayor";
+			}
+			system("pause");
+			break;
+		}
+		case 8: {
+			system("CLS");
+			double rentabilidadventas;
+			cout << "                          Rentabilidad Sobre Ventas             " << endl;
+			rentabilidadventas = (GOP / VENTASNETAS) * 100;
+
+			cout << "\n Refleja la proporcion que las utilidades brutas obtenidas representan con relacion a las ventas netas que las producen";
+			cout << "\nRentabilidad sobre ventas = (Utilidad Neta  /  Ventas Netas ) * 100: " << rentabilidadventas << endl;
+
+			if (rentabilidadventas < 0) {
+
+				cout << "Al cierre del ejercicio la empresa tuvo pérdida";
+			}
+			else if (rentabilidadventas > 0 && rentabilidadventas < 5 ) {
+				cout << "El Margen Neto de Utilidad es muy bajo, se compro compra a precios muy altos y las ventas no generar una utilidad bruta aceptable";
+			}
+		
+			else if (rentabilidadventas > 5 && rentabilidadventas <= 30) {
+				cout << "El Margen Neto de Utilidad de la empresa es estable, las ventas y las compras estan teniendo un  buen ritmo";
+			}
+			else if (rentabilidadventas > 30) {
+				cout << "El Margen Neto de Utilidad es muy bueno la empresa está generando muy buenas ventas en relacion a lo que compra ";
+			}
+			system("pause");
+			break;
+			
+		}
+			
+		case 9: {
+			system("CLS");
+			double utilidadoperacion;
+			cout << "             Utiliadad de Operacion a Ventas"<< endl ;
+			cout << "\nMide la razon o por ciento que la utilidad neta representa con relacion a las ventas netas que se analizan" << endl;
+			cout << "Mide la facilidad de convertir las ventas en utilidad" << endl;
+			utilidadoperacion = (PEROGANAN / VENTASNETAS) *100 ;
+			cout << "\n\n Utilidad de Operacion a Ventas = (Utilidad Neta / Ventas Netas ) * 100: " << utilidadoperacion << endl; 
+			if (utilidadoperacion < 0) {
+				cout << "\n\n No hay utilidad en el ejercicio, hubo perdidas al final del ejercicio ";
+			}
+			else if (utilidadoperacion > 0 && utilidadoperacion < 10 ) {
+				cout << "\n\n El margen de utilidad operacional es bajo a la empresa la cuesta convertir en utilidad la ventas netas debido a los gastos ";
+
+			}
+			else if (utilidadoperacion > 10 && utilidadoperacion < 30) {
+				cout << "\n\n El margen de utilidad operacional es es normal se mantiende estable, pero con reduccion estratégica en los gastos puede mejorar considerablemente ";
+			}
+
+			else if (utilidadoperacion > 30) {
+				cout << "\n\n El margen de utilidad operacional es Alto en realcion a las ventas netas, a la empresa no le es problema convertir las ventas en utilidad y los gastos y costos son normales";
+			}
+
+
+
+		   system("pause");
+			break;
+		}
+		case 10: {
+			system("CLS");
+			double rentabilidadactivo;
+			cout << "                Rentabilidad sobre el Activo                           " << endl;
+			cout << "  \n Mide el retorno obtenido por cada dolar invertido en activos";
+			rentabilidadactivo = (PEROGANAN / SUMAACTIVO) * 100;
+			cout << "\n\n Rentabilidad sobre el Activo = (Utilidad Neta / Activo Total): " << rentabilidadactivo << endl;
+			if (rentabilidadactivo < 0) {
+				cout << "El ejercicio no tuvo rentabilidad ya que al final del ejercicio se obtuvieron perdidas";
+			}
+
+			else if (rentabilidadactivo > 0 && rentabilidadactivo < 5) {
+				cout << "La rentabilidad es muy baja las ganancias en relacion a los Activos invertidos representan una minima parte y no ayuda al crecimiento de la empresa";
+			}
+
+			else if (rentabilidadactivo > 5 && rentabilidadactivo < 15) {
+				cout << "Las utilidades en relacion a los Activos invertidos fueron basicas sirven para que la empresa empiece a mejorar pero , se necesitan estrategias que impulsen las ventas";
+
+			}
+			else if (rentabilidadactivo > 15 < 30) {
+				cout << "Las utilidades permanecen estables al igual que los Activos , la empresa tiene una constante inversion y se esta reflejando en sus ganancias";
+			}
+			else if (rentabilidadactivo > 30) {
+				cout << "La empresa generó un gran porcentaje en realacion a los Activos invertidos actualmente, de mantener este ritmo crecerá muy rapido";
+			}
+			system("pause");
+			break;
+		}
+		case 11: {
+			system("CLS");
+			double rentabilidadcapital;
+			cout << "             Rentabilidad sobre el Capital               " << endl;
+			cout << "  \n Mide el rendimiento que la utilidad tuvo en base a la inversion de los socios";
+			rentabilidadcapital = (PEROGANAN / capital) * 100;
+			cout << "\n\n Rentabilidad sobre el Capital  = (Utilidad Neta / Capital ): " << rentabilidadcapital << endl;
+			if (rentabilidadcapital < 0)
+			{
+				cout << "No hubo utilidad el ejercicio registró una perdida de " << PEROGANAN << endl;
+			}
+
+			else if  (rentabilidadcapital > 0)
+			{
+				cout << "Los socios obtuvieron un rendimiento en su inversion del: " << rentabilidadcapital << " %" << endl;
+			}
+			system("pause");
+			break;
+		}
+		case 12: {
+			system("CLS");
+			double rotacioninventario;
+			int empresa;
+			bool repite = true;
+			do{
+			cout << "                Rotacion de Inventarios                           " << endl;
+			cout << "\n Mide el numero de veces que se han renovado las existencias durante un periodo el calculo esta realizado a un año comercial 360 dias" << endl;
+			rotacioninventario = (MI2 / COSTOV) * 360;
+			cout << "\n\n Rotacion de Inventarios  = (Mercaderia / Costo de ventas ): " << rotacioninventario << endl;
+			cout << "\n\nEmpresa de Venta de Alimentos o Restaurantes no.1" << endl;
+			cout << "Empresa de Venta de Ropa y Moda no.2" << endl;
+			cout << "Empresa de Venta de Tecnologia no.3" << endl;
+			cout << "Empresa de Venta de Mobiliario y Equipo no.4" << endl;
+			cout << "Empresa de Venta de Vehiculos no.5" << endl;
+			cout << "Empresa de Servicios no.6 " << endl;
+			cout << "Ver otra razon financiera no.7" << endl;
+			cout << "Escoja la Actividad principal del la empresa : "; cin >> empresa;
+
+			switch (empresa) {
+			case 1: {
+				system("CLS");
+				cout << "Empresa de Venta de Alimentos o Restaurantes" << endl;
+				cout << "\n\n Rotacion de Inventarios  = (Mercaderia / Costo de ventas ): " << rotacioninventario << endl;
+				if (rotacioninventario = 0) {
+
+					cout << "\nNo hubo rotacion en el inventario la empresa no esta activa" << endl;
+				}
+
+				else if (rotacioninventario <= 5) {
+					cout << "\nLa Rotacion del Inventario fue casi nula para el tipo de negocio esto significa perdidas demasiado altas con peligro de quiebra" << endl;
+				}
+				else if (rotacioninventario > 10 && rotacioninventario <= 15)
+				{
+					cout << "\nLa rotacion del inventario es muy baja significa que varios productos se echaron a perder y hubo grandes perdidas" << endl;
+				}
+				else if (rotacioninventario > 15 && rotacioninventario <= 30) {
+
+					cout << "\nLa rotacion del Inventario fue normal para el tipo de negocio" << endl;
+				}
+				else if (rotacioninventario > 30) {
+					cout << "\nLa rotacion del Inventrio fue muy buena se estan optimizando los rescursos y los productos se estan vendiendo muy bien " << endl;
+				}
+
+
+
+				system("pause");
+				break;
+			}
+			case 2: {
+				system("CLS");
+				cout << "Empresa de Venta de Ropa y Moda" << endl;
+				cout << "\n\n Rotacion de Inventarios  = (Mercaderia / Costo de ventas ): " << rotacioninventario << endl;
+				if (rotacioninventario = 0) {
+
+					cout << "\nNo hubo rotacion en el inventario la empresa no esta activa" << endl;
+				}
+
+				else if (rotacioninventario <= 5) {
+					cout << "\nLa Rotacion del Inventario fue casi nula para el tipo de negocio esto significa perdidas demasiado altas con peligro de quiebra" << endl;
+				}
+				else if (rotacioninventario > 5 && rotacioninventario <= 10)
+				{
+					cout << "\nLa rotacion del inventario es muy baja significa que varios productos se echaron a perder y hubo grandes perdidas" << endl;
+				}
+				else if (rotacioninventario > 10 && rotacioninventario <= 20) {
+
+					cout << "\nLa rotacion del Inventario fue normal para el tipo de negocio" << endl;
+				}
+				else if (rotacioninventario > 20) {
+					cout << "\nLa rotacion del Inventrio fue muy buena se estan optimizando los rescursos y los productos se estan vendiendo muy bien " << endl;
+				}
+
+				system("pause");
+				break;
+			}
+			case 3: {
+				system("CLS");
+				cout << "Empresa de Venta de Tecnologia " << endl;
+				cout << "\n\n Rotacion de Inventarios  = (Mercaderia / Costo de ventas ): " << rotacioninventario << endl;
+
+				if (rotacioninventario = 0) {
+
+					cout << "\nNo hubo rotacion en el inventario la empresa no esta activa" << endl;
+				}
+
+				else if (rotacioninventario <= 3) {
+					cout << "\nLa Rotacion del Inventario fue casi nula para el tipo de negocio esto significa perdidas demasiado altas con peligro de quiebra" << endl;
+				}
+				else if (rotacioninventario > 3 && rotacioninventario <= 5)
+				{
+					cout << "\nLa rotacion del inventario es muy baja significa que varios productos se echaron a perder y hubo grandes perdidas" << endl;
+				}
+				else if (rotacioninventario > 5 && rotacioninventario <= 10) {
+
+					cout << "\nLa rotacion del Inventario fue normal para el tipo de negocio" << endl;
+				}
+				else if (rotacioninventario > 10) {
+					cout << "\nLa rotacion del Inventrio fue muy buena se estan optimizando los rescursos y los productos se estan vendiendo muy bien " << endl;
+				}
+				system("pause");
+				break;
+			}
+			case 4: {
+				system("CLS");
+				cout << "Empresa de Venta de Mobliario y equipo " << endl;
+				cout << "\n\n Rotacion de Inventarios  = (Mercaderia / Costo de ventas ): " << rotacioninventario << endl;
+
+				if (rotacioninventario = 0) {
+
+					cout << "\nNo hubo rotacion en el inventario la empresa no esta activa" << endl;
+				}
+
+				else if (rotacioninventario <= 1) {
+					cout << "\nLa Rotacion del Inventario fue casi nula para el tipo de negocio esto significa perdidas demasiado altas con peligro de quiebra" << endl;
+				}
+				else if (rotacioninventario > 1 && rotacioninventario <= 1.5)
+				{
+					cout << "\nLa rotacion del inventario es muy baja y hubo grandes perdidas" << endl;
+				}
+				else if (rotacioninventario > 1.5 && rotacioninventario <= 4.5) {
+
+					cout << "\nLa rotacion del Inventario fue normal para el tipo de negocio" << endl;
+				}
+				else if (rotacioninventario > 4.5) {
+					cout << "\nLa rotacion del Inventrio fue muy buena se estan optimizando los rescursos y los productos se estan vendiendo muy bien " << endl;
+				}
+
+				system("pause");
+				break;
+			}
+			case 5: {
+				system("CLS");
+				cout << "Empresa de Venta de Vehiculos " << endl;
+				cout << "\n\n Rotacion de Inventarios  = (Mercaderia / Costo de ventas ): " << rotacioninventario << endl;
+
+				if (rotacioninventario = 0) {
+
+					cout << "\nNo hubo rotacion en el inventario la empresa no esta activa" << endl;
+				}
+
+				else if (rotacioninventario <= 0.5) {
+					cout << "\nLa Rotacion del Inventario fue casi nula para el tipo de negocio esto significa perdidas demasiado altas con peligro de quiebra" << endl;
+				}
+				else if (rotacioninventario > 0.5 && rotacioninventario <= 1)
+				{
+					cout << "\nLa rotacion del inventario es muy baja y hubo grandes perdidas" << endl;
+				}
+				else if (rotacioninventario > 1 && rotacioninventario <= 2) {
+
+					cout << "\nLa rotacion del Inventario fue normal para el tipo de negocio" << endl;
+				}
+				else if (rotacioninventario > 2) {
+					cout << "\nLa rotacion del Inventrio fue muy buena se estan optimizando los rescursos y los productos se estan vendiendo muy bien " << endl;
+				}
+
+				system("pause");
+				break;
+			}
+			case 6: {
+				system("CLS");
+				cout << "Empresa de Prestacion de Servicios " << endl;
+				cout << "\n\n Rotacion de Inventarios  = (Mercaderia / Costo de ventas ): " << rotacioninventario << endl;
+				cout << "        \n\nEste tipo de empresa no posee inventarios revisar otra Razon Financiera" << endl;
+
+				system("pause");
+				break;
+			}
+			case 7: {
+				repite = false;
+			}
+			}
+
+
+		} while (repite);
+
+			
+			system("pause");
+			break;
+		}
+		case 13: {
+			system("CLS");
+			double rotacionclientes;
+			int empresa;
+			bool repite = true;
+			do{
+				system("CLS");
+			cout << "                         Rotacion de Cuentas Por Cobrar                         " << endl;
+			cout << "\nMide el tiempo en que las cuentas por cobrar se convierten en Efectivo calculado en año comercial de 360 dias " << endl;
+			rotacionclientes = (clientes / Ventas) * 360;
+			cout << "\n\n Rotacion de Cuentas por cobrar = (Clientes / Ventas  ) * 360: " << rotacionclientes << endl;
+			cout << "\n\nEmpresa de Venta de Alimentos o Restaurantes no.1" << endl;
+			cout << "Empresa de Venta de Ropa y Moda no.2" << endl;
+			cout << "Empresa de Venta de Tecnologia no.3" << endl;
+			cout << "Empresa de Venta de Mobiliario y Equipo no.4" << endl;
+			cout << "Empresa de Venta de Vehiculos no.5"<< endl;
+			cout << "Empresa de Servicios no.6 " << endl;
+			cout << "Ver otra razon financiera no.7" << endl;
+			cout << "Escoja la Actividad principal del la empresa : "; cin >> empresa;
+
+			switch (empresa) {
+			case 1: {
+				system("CLS");
+				cout << "Empresa de Venta de Alimentos o Restaurantes" << endl;
+				cout << "\n\n\nEste tipo de Negocio no deberia tener cuentas por cobrar ya que debe ser venta al contado al momento del cosumo del cliente"<<endl;
+				system("pause");
+				break;
+			}
+			case 2: {
+				system("CLS");
+				cout << "Empresa de Venta de Ropa y Moda"<<endl;
+				cout << "\n\nEste tipo de Negocio no deberia tener cuentas por cobrar ya que debe ser venta al contado al momento del cosumo del cliente"<<endl;
+				system("pause");
+				break;
+			}
+			case 3: {
+				system("CLS");
+				cout << "Empresa de Venta de Tecnologia " << endl;
+				cout << "\n\n Rotacion de Cuentas por cobrar = (Clientes / Ventas  )*360: " << rotacionclientes << endl;
+
+				if (rotacionclientes = 0) {
+
+					cout << "\nNo hubo rotacion en las cuentas por cobrar de la empresa verificar este departamento y los procesos administrativos que estan aplicando"<<endl;
+				}
+
+				else if (rotacionclientes <= 20) {
+					cout << "\nLa rotacion de las cuentas por cobrar fue muy baja, prestarle atencion al departamento de cuentas por cobrar"<<endl;
+				}
+				else if (rotacionclientes > 20 && rotacionclientes <= 40)
+				{
+					cout << "\nLa rotacion de las cuentas por cobrar fue normal durante el año, aunque podria mejorar con estrategias en descuentos por pronto pago"<<endl;
+				}
+				else if (rotacionclientes > 40) {
+
+					cout<< "\nLa rotacion de las cuentas por cobrar fue bastante bien a lo largo del año, los procesos que se tienen actualmente se estan funcionando"<<endl;
+				}
+				system("pause");
+				break;
+			}
+			case 4: {
+				system("CLS");
+				cout << "Empresa de Venta de Mobliario y equipo " << endl;
+				cout << "\n\n Rotacion de Cuentas por cobrar = (Clientes / Ventas  )*360: " << rotacionclientes << endl;
+				if (rotacionclientes = 0) {
+
+					cout << "No hubo rotacion en las cuentas por cobrar de la empresa verificar este departamento y los procesos administrativos que estan aplicando";
+				}
+
+				else if (rotacionclientes <= 8) {
+					cout << "La rotacion de las cuentas por cobrar fue muy baja, prestarle atencion al departamento de cuentas por cobrar";
+				}
+				else if (rotacionclientes > 8 && rotacionclientes <= 16)
+				{
+					cout << "La rotacion de las cuentas por cobrar fue normal durante el año, aunque podria mejorar con estrategias en descuentos por pronto pago";
+				}
+				else if (rotacionclientes > 16) {
+
+					cout << "La rotacion de las cuentas por cobrar fue bastante bien a lo largo del año, los procesos que se tienen actualmente se estan funcionando";
+				}
+
+				system("pause");
+				break;
+                }
+			case 5: {
+				system("CLS");
+				cout << "Empresa de Venta de Vehiculos " << endl;
+				cout << "\n\n Rotacion de Cuentas por cobrar = (Clientes / Ventas  )*360: " << rotacionclientes << endl;
+				if (rotacionclientes = 0) {
+
+					cout << "No hubo rotacion en las cuentas por cobrar de la empresa verificar este departamento y los procesos administrativos que estan aplicando";
+				}
+
+				else if (rotacionclientes <= 4) {
+					cout << "La rotacion de las cuentas por cobrar fue muy baja, prestarle atencion al departamento de cuentas por cobrar";
+				}
+				else if (rotacionclientes > 4 && rotacionclientes <= 10)
+				{
+					cout << "La rotacion de las cuentas por cobrar fue normal durante el año, aunque podria mejorar con estrategias en descuentos por pronto pago";
+				}
+				else if (rotacionclientes > 10) {
+
+					cout << "La rotacion de las cuentas por cobrar fue bastante bien a lo largo del año, los procesos que se tienen actualmente se estan funcionando";
+				}
+
+				system("pause");
+				break;
+			}
+			case 6: {
+				system("CLS");
+				cout << "Empresa de Prestacion de Servicios " << endl;
+				cout << "\n\n Rotacion de Cuentas por cobrar = (Clientes / Ventas  )*360: " << rotacionclientes << endl;
+				if (rotacionclientes = 0) {
+
+					cout << "No hubo rotacion en las cuentas por cobrar de la empresa verificar este departamento y los procesos administrativos que estan aplicando";
+				}
+
+				else if (rotacionclientes <= 15) {
+					cout << "La rotacion de las cuentas por cobrar fue muy baja, prestarle atencion al departamento de cuentas por cobrar";
+				}
+				else if (rotacionclientes > 15 && rotacionclientes <= 35)
+				{
+					cout << "La rotacion de las cuentas por cobrar fue normal durante el año, aunque podria mejorar con estrategias en descuentos por pronto pago";
+				}
+				else if (rotacionclientes > 35) {
+
+					cout << "La rotacion de las cuentas por cobrar fue bastante bien a lo largo del año, los procesos que se tienen actualmente se estan funcionando";
+				}
+
+				system("pause");
+				break;
+			}
+			case 7: {
+				repite = false;
+			}
+
+
+				  
+
+			}
+
+
+			} while (repite);
+
+			system("pause");
+			break;
+		}
+		case 14: {
+			system("CLS");
+			double pasivolargo;
+			cout << "          Origen de Capital a largo plazo                    " << endl;
+			cout << "Mide el grado de Deudas a largo plazo en relacion al capital" << endl;
+			pasivolargo = PASIVOFIJO / capital;
+			cout << " Origen de Capital a largo plazo =  (Pasivo Fijo / Capital) : " << pasivolargo << endl;
+			if (pasivolargo > 0 && pasivolargo >= 1) {
+				cout << "La inversion es mayor que las deudas a largo plazo indicando que la empresa no depende de terceros y las deudas mas fuertes las puede solventar" << endl;
+			}
+			else if (pasivolargo > 1 && pasivolargo >= 2) {
+				cout << "Las deudas a largo plazo son un poco mayores a la inversion de capital aun son deudas controlables pero se deben tomar muy encuenta" << endl;
+			}
+			else if (pasivolargo > 2) {
+				cout << "Las deudas a largo plazo son de mas del doble del capital invertido la empresa es dependiente totalmente de terceros" << endl;
+			}
+			system("pause");
+			break;
+		}
+		case 15: {
+			system("CLS");
+			double activolargo;
+			cout << "                          Indice de inversion del capital                        " << endl;
+			cout << "\n\n Muestra la relación que guardan los bienes estables con el capital propio que es una inversión permanente " << endl;
+			activolargo = ACFIJO  / capital;
+			cout << "\nIndice de inversion del capital = Activo Fijo  / Capital:" << activolargo << endl;
+			if (activolargo > 0 && activolargo <= 1) {
+				cout << "\nLa empresa aun no tiene Activos Fijos estables la inversion de capital aun es muy superior" << endl;
+				
+			}
+			else if (activolargo > 1 && activolargo <= 2) {
+				cout << "\nLos Activos fijos de la empresa son mayores al capital, Esto indica que la emprsa ya tiene estructura de bienes propios estable";
+			}
+			else if (activolargo > 2) {
+				cout << "\n Los Activos fijos sobre pasan por mas del doble al capital, indicando que la empresa posee una estructura de bienes propios y no necesita inversion de capital en este rubro";
+			}
+			system("pause");
+			break;
+
+
+			break;
+		}
+		case 16: {
+			repite = false;
+			break;
+		}
+		}
+	} while (repite);
 
 }
+
+
+
 
 
 
@@ -1044,6 +1880,10 @@ void miembros() {
 	cout << "           Nombre : Marcos Sleyther Castellanos Lemus	 Carnet : 6990-19-9299" << endl;
 	cout << "           Nombre : Luis Simon Lorenzo Gonzalez          Carnet : 6990-19-12141" << endl;
 	cout << "           Nombre : Eduardo Antonio Perez Ajquijay       Carnet : 6990-19-547";
+	cout << "\n\n\n\n             'Si puedes imaginarlo, puedes programarlo'  " << endl;
+	cout << "                         Alejandro Taboada (1997 - 2019)" << endl;
+
+
 	cout << "\n\n\n\nPresiones Enter para regresar al menú principal";
 	system("pause");
 	return menu();
@@ -1056,5 +1896,3 @@ void version() {
 	system("pause");
 	return menu();
 }
-
-	
