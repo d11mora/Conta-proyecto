@@ -880,7 +880,7 @@ void Balnce() {
 	cout << "Devoluciones S/Ventas       " << DEVVENTAS << endl;
 	cout << "Intereses Gasto             " << INTG << endl;
 	cout << "Depreciacion Mob y Equipo   " << DEPMB << endl;
-	cout << "Depreciacion E de Computo   " << DEPEC << endl;
+	cout << "Depreciacion Eqp de Computo " << DEPEC << endl;
 	cout << "Depreciacion Vehiculos      " << DEPVH << endl;
 	cout << "Amortizacion Gastos de Org. " << AMORGO << endl;
 	cout << "Ventas                                           " << Ventas;
