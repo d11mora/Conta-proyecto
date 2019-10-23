@@ -1037,11 +1037,9 @@ void Razones() {
 	system("CLS");
 	bool repite = true;
 	int opcion = 0;
-	cout << "                      Razones Financieras            " << endl;
 	do {
 		system("CLS");
-		cout << "                                      Menu Principal Proyecto de Contabilidad" << endl;
-		cout << "                                                  UMG SEDE ZONA 16" << endl;
+		cout << "                      Razones Financieras            " << endl;
 		cout << "1.Indice De Liquidez                                      " << endl;
 		cout << "2.Prueba de Acido                                         " << endl;
 		cout << "3.Prueba Defensiva                                        " << endl;
